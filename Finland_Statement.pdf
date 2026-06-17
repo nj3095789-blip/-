@@ -1,111 +1,374 @@
 %PDF-1.4
-%“Œ‹ž ReportLab Generated PDF document (opensource)
+%âãÏÓ
 1 0 obj
 <<
-/F1 2 0 R /F2 3 0 R /F3 5 0 R
+/Type /Catalog
+/Pages 2 0 R
 >>
 endobj
 2 0 obj
 <<
-/BaseFont /Helvetica /Encoding /WinAnsiEncoding /Name /F1 /Subtype /Type1 /Type /Font
+/Type /Pages
+/Kids [7 0 R]
+/Count 1
 >>
 endobj
 3 0 obj
 <<
-/BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding /Name /F2 /Subtype /Type1 /Type /Font
+/Type /Font
+/Subtype /Type1
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
 >>
 endobj
 4 0 obj
 <<
-/Contents 12 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 11 0 R /Resources <<
-/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
->> /Rotate 0 /Trans <<
-
->> 
-  /Type /Page
+/Type /Font
+/Subtype /Type1
+/BaseFont /Helvetica-Bold
+/Encoding /WinAnsiEncoding
 >>
 endobj
 5 0 obj
 <<
-/BaseFont /Helvetica-Oblique /Encoding /WinAnsiEncoding /Name /F3 /Subtype /Type1 /Type /Font
+/Type /Font
+/Subtype /Type1
+/BaseFont /Helvetica-Oblique
+/Encoding /WinAnsiEncoding
 >>
 endobj
 6 0 obj
 <<
-/Contents 13 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 11 0 R /Resources <<
-/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
->> /Rotate 0 /Trans <<
-
->> 
-  /Type /Page
+/Length 12282
 >>
+stream
+BT /F2 14 Tf 42.519 789.481 Td (BLOM BANK SAL) Tj ET
+BT /F1 8 Tf 352.481 789.481 Td (Capital L.L. 3,000,000,000,000) Tj ET
+BT /F1 8 Tf 352.481 777.481 Td (R.C.B: 24783 - List of Banks: 14) Tj ET
+BT /F1 8 Tf 352.481 765.481 Td (Head Office: Beirut, Lebanon) Tj ET
+BT /F1 8 Tf 352.481 753.481 Td (Date of issue: 16/05/2026) Tj ET
+42.519 771.481 m 552.481 771.481 l S
+BT /F2 16 Tf 195 751.481 Td (STATEMENT OF ACCOUNT) Tj ET
+BT /F2 9 Tf 42.519 734.481 Td (Name:) Tj ET
+BT /F1 9 Tf 102.519 734.481 Td (MIKAEL JUHANI VIRTANEN) Tj ET
+BT /F2 9 Tf 325.979 734.481 Td (Account Number:) Tj ET
+BT /F1 9 Tf 405.3478 734.481 Td (01021035224104520) Tj ET
+BT /F2 9 Tf 42.519 720.481 Td (Period:) Tj ET
+BT /F1 9 Tf 102.519 720.481 Td (15/11/2025 TO 16/05/2026) Tj ET
+BT /F2 9 Tf 325.979 720.481 Td (Currency:) Tj ET
+BT /F1 9 Tf 405.3478 720.481 Td (US DOLLAR) Tj ET
+BT /F2 9 Tf 42.519 706.481 Td (Branch:) Tj ET
+BT /F1 9 Tf 102.519 706.481 Td (VERDUN BRANCH) Tj ET
+BT /F2 9 Tf 325.979 706.481 Td (IBAN:) Tj ET
+BT /F1 9 Tf 405.3478 706.481 Td (LB65 0014 0000 0000 0102 1035 2241 0452) Tj ET
+0.85 0.85 0.85 rg
+42.519 666.481 486 18 re f
+0 0 0 rg
+BT /F2 8.5 Tf 45.519 671.481 Td (Date) Tj ET
+BT /F2 8.5 Tf 123.519 671.481 Td (Description) Tj ET
+BT /F2 8.5 Tf 321.519 671.481 Td (Document) Tj ET
+BT /F2 8.5 Tf 448.519 671.481 Td (Transaction) Tj ET
+BT /F2 8.5 Tf 524.519 671.481 Td (Balance) Tj ET
+0.6 0.6 0.6 RG
+42.519 666.481 486 18 re S
+120.519 666.481 m 120.519 684.481 l S
+318.519 666.481 m 318.519 684.481 l S
+398.519 666.481 m 398.519 684.481 l S
+452.519 666.481 m 452.519 684.481 l S
+BT /F1 8 Tf 45.519 656.481 Td (2025/11/14) Tj ET
+BT /F1 8 Tf 123.519 656.481 Td (Brought Forward) Tj ET
+BT /F1 8 Tf 321.519 656.481 Td () Tj ET
+BT /F1 8 Tf 401.519 656.481 Td () Tj ET
+BT /F1 8 Tf 455.519 656.481 Td (8,500.00 C) Tj ET
+0.75 0.75 0.75 RG
+42.519 652.481 m 528.519 652.481 l S
+0.96 0.96 0.96 rg
+42.519 638.481 486 14 re f
+0 0 0 rg
+BT /F1 8 Tf 45.519 642.481 Td (2025/11/15) Tj ET
+BT /F1 8 Tf 123.519 642.481 Td (POS - Helsinki Supermarket) Tj ET
+BT /F1 8 Tf 321.519 642.481 Td (POS112233) Tj ET
+BT /F1 8 Tf 401.519 642.481 Td (215.40 D) Tj ET
+BT /F1 8 Tf 455.519 642.481 Td (8,284.60 C) Tj ET
+0.75 0.75 0.75 RG
+42.519 638.481 m 528.519 638.481 l S
+BT /F1 8 Tf 45.519 628.481 Td (2025/11/18) Tj ET
+BT /F1 8 Tf 123.519 628.481 Td (Bill Payment - Elisa Telecom) Tj ET
+BT /F1 8 Tf 321.519 628.481 Td (UT223344) Tj ET
+BT /F1 8 Tf 401.519 628.481 Td (89.99 D) Tj ET
+BT /F1 8 Tf 455.519 628.481 Td (8,194.61 C) Tj ET
+0.75 0.75 0.75 RG
+42.519 624.481 m 528.519 624.481 l S
+0.96 0.96 0.96 rg
+42.519 610.481 486 14 re f
+0 0 0 rg
+BT /F1 8 Tf 45.519 614.481 Td (2025/11/21) Tj ET
+BT /F1 8 Tf 123.519 614.481 Td (POS - Neste Gas Station) Tj ET
+BT /F1 8 Tf 321.519 614.481 Td (POS334455) Tj ET
+BT /F1 8 Tf 401.519 614.481 Td (145.00 D) Tj ET
+BT /F1 8 Tf 455.519 614.481 Td (8,049.61 C) Tj ET
+0.75 0.75 0.75 RG
+42.519 610.481 m 528.519 610.481 l S
+BT /F1 8 Tf 45.519 600.481 Td (2025/11/25) Tj ET
+BT /F1 8 Tf 123.519 600.481 Td (POS - Netflix Subscription) Tj ET
+BT /F1 8 Tf 321.519 600.481 Td (POS445566) Tj ET
+BT /F1 8 Tf 401.519 600.481 Td (67.06 D) Tj ET
+BT /F1 8 Tf 455.519 600.481 Td (7,982.55 C) Tj ET
+0.75 0.75 0.75 RG
+42.519 596.481 m 528.519 596.481 l S
+0.96 0.96 0.96 rg
+42.519 582.481 486 14 re f
+0 0 0 rg
+BT /F1 8 Tf 45.519 586.481 Td (2025/11/28) Tj ET
+BT /F1 8 Tf 123.519 586.481 Td (ATM Withdrawal - Helsinki) Tj ET
+BT /F1 8 Tf 321.519 586.481 Td (1234567) Tj ET
+BT /F1 8 Tf 401.519 586.481 Td (300.00 D) Tj ET
+BT /F1 8 Tf 455.519 586.481 Td (7,682.55 C) Tj ET
+0.75 0.75 0.75 RG
+42.519 582.481 m 528.519 582.481 l S
+BT /F1 8 Tf 45.519 572.481 Td (2025/12/01) Tj ET
+BT /F1 8 Tf 123.519 572.481 Td (Payroll - Monthly Salary Transfer) Tj ET
+BT /F1 8 Tf 321.519 572.481 Td (PAY556677) Tj ET
+BT /F1 8 Tf 401.519 572.481 Td (3,200.00 C) Tj ET
+BT /F1 8 Tf 455.519 572.481 Td (10,882.55 C) Tj ET
+0.75 0.75 0.75 RG
+42.519 568.481 m 528.519 568.481 l S
+0.96 0.96 0.96 rg
+42.519 554.481 486 14 re f
+0 0 0 rg
+BT /F1 8 Tf 45.519 558.481 Td (2025/12/03) Tj ET
+BT /F1 8 Tf 123.519 558.481 Td (Standing Order - Apartment Rent) Tj ET
+BT /F1 8 Tf 321.519 558.481 Td (RT667788) Tj ET
+BT /F1 8 Tf 401.519 558.481 Td (850.00 D) Tj ET
+BT /F1 8 Tf 455.519 558.481 Td (10,032.55 C) Tj ET
+0.75 0.75 0.75 RG
+42.519 554.481 m 528.519 554.481 l S
+BT /F1 8 Tf 45.519 544.481 Td (2025/12/08) Tj ET
+BT /F1 8 Tf 123.519 544.481 Td (POS - Prisma Retail) Tj ET
+BT /F1 8 Tf 321.519 544.481 Td (POS778899) Tj ET
+BT /F1 8 Tf 401.519 544.481 Td (312.50 D) Tj ET
+BT /F1 8 Tf 455.519 544.481 Td (9,720.05 C) Tj ET
+0.75 0.75 0.75 RG
+42.519 540.481 m 528.519 540.481 l S
+0.96 0.96 0.96 rg
+42.519 526.481 486 14 re f
+0 0 0 rg
+BT /F1 8 Tf 45.519 530.481 Td (2025/12/12) Tj ET
+BT /F1 8 Tf 123.519 530.481 Td (POS - Apple Services) Tj ET
+BT /F1 8 Tf 321.519 530.481 Td (POS889900) Tj ET
+BT /F1 8 Tf 401.519 530.481 Td (199.00 D) Tj ET
+BT /F1 8 Tf 455.519 530.481 Td (9,521.05 C) Tj ET
+0.75 0.75 0.75 RG
+42.519 526.481 m 528.519 526.481 l S
+BT /F1 8 Tf 45.519 516.481 Td (2025/12/15) Tj ET
+BT /F1 8 Tf 123.519 516.481 Td (Bill Payment - Helen Energy) Tj ET
+BT /F1 8 Tf 321.519 516.481 Td (UT990011) Tj ET
+BT /F1 8 Tf 401.519 516.481 Td (134.20 D) Tj ET
+BT /F1 8 Tf 455.519 516.481 Td (9,386.85 C) Tj ET
+0.75 0.75 0.75 RG
+42.519 512.481 m 528.519 512.481 l S
+0.96 0.96 0.96 rg
+42.519 498.481 486 14 re f
+0 0 0 rg
+BT /F1 8 Tf 45.519 502.481 Td (2025/12/20) Tj ET
+BT /F1 8 Tf 123.519 502.481 Td (POS - Alko Store) Tj ET
+BT /F1 8 Tf 321.519 502.481 Td (POS001122) Tj ET
+BT /F1 8 Tf 401.519 502.481 Td (58.90 D) Tj ET
+BT /F1 8 Tf 455.519 502.481 Td (9,327.95 C) Tj ET
+0.75 0.75 0.75 RG
+42.519 498.481 m 528.519 498.481 l S
+BT /F1 8 Tf 45.519 488.481 Td (2025/12/22) Tj ET
+BT /F1 8 Tf 123.519 488.481 Td (POS - Uber Ride) Tj ET
+BT /F1 8 Tf 321.519 488.481 Td (POS112344) Tj ET
+BT /F1 8 Tf 401.519 488.481 Td (22.50 D) Tj ET
+BT /F1 8 Tf 455.519 488.481 Td (9,305.45 C) Tj ET
+0.75 0.75 0.75 RG
+42.519 484.481 m 528.519 484.481 l S
+0.96 0.96 0.96 rg
+42.519 470.481 486 14 re f
+0 0 0 rg
+BT /F1 8 Tf 45.519 474.481 Td (2025/12/28) Tj ET
+BT /F1 8 Tf 123.519 474.481 Td (Online Transfer - Sent) Tj ET
+BT /F1 8 Tf 321.519 474.481 Td (TRF223455) Tj ET
+BT /F1 8 Tf 401.519 474.481 Td (500.00 D) Tj ET
+BT /F1 8 Tf 455.519 474.481 Td (8,805.45 C) Tj ET
+0.75 0.75 0.75 RG
+42.519 470.481 m 528.519 470.481 l S
+BT /F1 8 Tf 45.519 460.481 Td (2026/01/01) Tj ET
+BT /F1 8 Tf 123.519 460.481 Td (Payroll - Monthly Salary Transfer) Tj ET
+BT /F1 8 Tf 321.519 460.481 Td (PAY334566) Tj ET
+BT /F1 8 Tf 401.519 460.481 Td (3,200.00 C) Tj ET
+BT /F1 8 Tf 455.519 460.481 Td (12,005.45 C) Tj ET
+0.75 0.75 0.75 RG
+42.519 456.481 m 528.519 456.481 l S
+0.96 0.96 0.96 rg
+42.519 442.481 486 14 re f
+0 0 0 rg
+BT /F1 8 Tf 45.519 446.481 Td (2026/01/03) Tj ET
+BT /F1 8 Tf 123.519 446.481 Td (Standing Order - Apartment Rent) Tj ET
+BT /F1 8 Tf 321.519 446.481 Td (RT445677) Tj ET
+BT /F1 8 Tf 401.519 446.481 Td (850.00 D) Tj ET
+BT /F1 8 Tf 455.519 446.481 Td (11,155.45 C) Tj ET
+0.75 0.75 0.75 RG
+42.519 442.481 m 528.519 442.481 l S
+BT /F1 8 Tf 45.519 432.481 Td (2026/01/10) Tj ET
+BT /F1 8 Tf 123.519 432.481 Td (POS - K-Market Supermarket) Tj ET
+BT /F1 8 Tf 321.519 432.481 Td (POS556788) Tj ET
+BT /F1 8 Tf 401.519 432.481 Td (278.30 D) Tj ET
+BT /F1 8 Tf 455.519 432.481 Td (10,877.15 C) Tj ET
+0.75 0.75 0.75 RG
+42.519 428.481 m 528.519 428.481 l S
+0.96 0.96 0.96 rg
+42.519 414.481 486 14 re f
+0 0 0 rg
+BT /F1 8 Tf 45.519 418.481 Td (2026/01/15) Tj ET
+BT /F1 8 Tf 123.519 418.481 Td (Bill Payment - Elisa Telecom) Tj ET
+BT /F1 8 Tf 321.519 418.481 Td (UT667899) Tj ET
+BT /F1 8 Tf 401.519 418.481 Td (89.99 D) Tj ET
+BT /F1 8 Tf 455.519 418.481 Td (10,787.16 C) Tj ET
+0.75 0.75 0.75 RG
+42.519 414.481 m 528.519 414.481 l S
+BT /F1 8 Tf 45.519 404.481 Td (2026/01/20) Tj ET
+BT /F1 8 Tf 123.519 404.481 Td (ATM Withdrawal - Espoo) Tj ET
+BT /F1 8 Tf 321.519 404.481 Td (2345678) Tj ET
+BT /F1 8 Tf 401.519 404.481 Td (400.00 D) Tj ET
+BT /F1 8 Tf 455.519 404.481 Td (10,387.16 C) Tj ET
+0.75 0.75 0.75 RG
+42.519 400.481 m 528.519 400.481 l S
+0.96 0.96 0.96 rg
+42.519 386.481 486 14 re f
+0 0 0 rg
+BT /F1 8 Tf 45.519 390.481 Td (2026/02/01) Tj ET
+BT /F1 8 Tf 123.519 390.481 Td (Payroll - Monthly Salary Transfer) Tj ET
+BT /F1 8 Tf 321.519 390.481 Td (PAY778900) Tj ET
+BT /F1 8 Tf 401.519 390.481 Td (3,200.00 C) Tj ET
+BT /F1 8 Tf 455.519 390.481 Td (13,587.16 C) Tj ET
+0.75 0.75 0.75 RG
+42.519 386.481 m 528.519 386.481 l S
+BT /F1 8 Tf 45.519 376.481 Td (2026/02/03) Tj ET
+BT /F1 8 Tf 123.519 376.481 Td (Standing Order - Apartment Rent) Tj ET
+BT /F1 8 Tf 321.519 376.481 Td (RT889011) Tj ET
+BT /F1 8 Tf 401.519 376.481 Td (850.00 D) Tj ET
+BT /F1 8 Tf 455.519 376.481 Td (12,737.16 C) Tj ET
+0.75 0.75 0.75 RG
+42.519 372.481 m 528.519 372.481 l S
+0.96 0.96 0.96 rg
+42.519 358.481 486 14 re f
+0 0 0 rg
+BT /F1 8 Tf 45.519 362.481 Td (2026/02/10) Tj ET
+BT /F1 8 Tf 123.519 362.481 Td (POS - Finnair Travel) Tj ET
+BT /F1 8 Tf 321.519 362.481 Td (POS990122) Tj ET
+BT /F1 8 Tf 401.519 362.481 Td (620.00 D) Tj ET
+BT /F1 8 Tf 455.519 362.481 Td (12,117.16 C) Tj ET
+0.75 0.75 0.75 RG
+42.519 358.481 m 528.519 358.481 l S
+BT /F1 8 Tf 45.519 348.481 Td (2026/02/18) Tj ET
+BT /F1 8 Tf 123.519 348.481 Td (POS - Prisma Retail) Tj ET
+BT /F1 8 Tf 321.519 348.481 Td (POS001233) Tj ET
+BT /F1 8 Tf 401.519 348.481 Td (195.40 D) Tj ET
+BT /F1 8 Tf 455.519 348.481 Td (11,921.76 C) Tj ET
+0.75 0.75 0.75 RG
+42.519 344.481 m 528.519 344.481 l S
+0.96 0.96 0.96 rg
+42.519 330.481 486 14 re f
+0 0 0 rg
+BT /F1 8 Tf 45.519 334.481 Td (2026/03/01) Tj ET
+BT /F1 8 Tf 123.519 334.481 Td (Payroll - Monthly Salary Transfer) Tj ET
+BT /F1 8 Tf 321.519 334.481 Td (PAY112344) Tj ET
+BT /F1 8 Tf 401.519 334.481 Td (3,200.00 C) Tj ET
+BT /F1 8 Tf 455.519 334.481 Td (15,121.76 C) Tj ET
+0.75 0.75 0.75 RG
+42.519 330.481 m 528.519 330.481 l S
+BT /F1 8 Tf 45.519 320.481 Td (2026/03/03) Tj ET
+BT /F1 8 Tf 123.519 320.481 Td (Standing Order - Apartment Rent) Tj ET
+BT /F1 8 Tf 321.519 320.481 Td (RT223455) Tj ET
+BT /F1 8 Tf 401.519 320.481 Td (850.00 D) Tj ET
+BT /F1 8 Tf 455.519 320.481 Td (14,271.76 C) Tj ET
+0.75 0.75 0.75 RG
+42.519 316.481 m 528.519 316.481 l S
+0.96 0.96 0.96 rg
+42.519 302.481 486 14 re f
+0 0 0 rg
+BT /F1 8 Tf 45.519 306.481 Td (2026/03/12) Tj ET
+BT /F1 8 Tf 123.519 306.481 Td (POS - Neste Gas Station) Tj ET
+BT /F1 8 Tf 321.519 306.481 Td (POS334566) Tj ET
+BT /F1 8 Tf 401.519 306.481 Td (132.00 D) Tj ET
+BT /F1 8 Tf 455.519 306.481 Td (14,139.76 C) Tj ET
+0.75 0.75 0.75 RG
+42.519 302.481 m 528.519 302.481 l S
+BT /F1 8 Tf 45.519 292.481 Td (2026/04/01) Tj ET
+BT /F1 8 Tf 123.519 292.481 Td (Payroll - Monthly Salary Transfer) Tj ET
+BT /F1 8 Tf 321.519 292.481 Td (PAY445677) Tj ET
+BT /F1 8 Tf 401.519 292.481 Td (3,200.00 C) Tj ET
+BT /F1 8 Tf 455.519 292.481 Td (17,339.76 C) Tj ET
+0.75 0.75 0.75 RG
+42.519 288.481 m 528.519 288.481 l S
+0.96 0.96 0.96 rg
+42.519 274.481 486 14 re f
+0 0 0 rg
+BT /F1 8 Tf 45.519 278.481 Td (2026/04/03) Tj ET
+BT /F1 8 Tf 123.519 278.481 Td (Standing Order - Apartment Rent) Tj ET
+BT /F1 8 Tf 321.519 278.481 Td (RT556788) Tj ET
+BT /F1 8 Tf 401.519 278.481 Td (850.00 D) Tj ET
+BT /F1 8 Tf 455.519 278.481 Td (16,489.76 C) Tj ET
+0.75 0.75 0.75 RG
+42.519 274.481 m 528.519 274.481 l S
+BT /F1 8 Tf 45.519 264.481 Td (2026/05/01) Tj ET
+BT /F1 8 Tf 123.519 264.481 Td (Payroll - Monthly Salary Transfer) Tj ET
+BT /F1 8 Tf 321.519 264.481 Td (PAY667899) Tj ET
+BT /F1 8 Tf 401.519 264.481 Td (3,200.00 C) Tj ET
+BT /F1 8 Tf 455.519 264.481 Td (19,689.76 C) Tj ET
+0.75 0.75 0.75 RG
+42.519 260.481 m 528.519 260.481 l S
+0.96 0.96 0.96 rg
+42.519 246.481 486 14 re f
+0 0 0 rg
+BT /F1 8 Tf 45.519 250.481 Td (2026/05/15) Tj ET
+BT /F1 8 Tf 123.519 250.481 Td (Online Transfer - Received) Tj ET
+BT /F1 8 Tf 321.519 250.481 Td (TRF778900) Tj ET
+BT /F1 8 Tf 401.519 250.481 Td (5,000.00 C) Tj ET
+BT /F1 8 Tf 455.519 250.481 Td (24,689.76 C) Tj ET
+0.75 0.75 0.75 RG
+42.519 246.481 m 528.519 246.481 l S
+0.5 0.5 0.5 RG
+42.519 246.481 486 438.0 re S
+BT /F3 8 Tf 42.519 55 Td (Except Errors or Omissions) Tj ET
+BT /F1 7.5 Tf 60 40 Td (This statement will be considered confirmed unless you notify the bank within fifteen days from delivery.) Tj ET
+BT /F1 7.5 Tf 90 28 Td (For any claims or inquiries, please contact the call center: \(961-1\) 758000) Tj ET
+BT /F1 8 Tf 270 15 Td (Page 1 of 1) Tj ET
+
+endstream
 endobj
 7 0 obj
 <<
-/Outlines 9 0 R /PageMode /UseNone /Pages 11 0 R /Type /Catalog
+/Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595 842]
+/Contents 6 0 R
+/Resources <<
+  /Font <<
+    /F1 3 0 R
+    /F2 4 0 R
+    /F3 5 0 R
+  >>
 >>
-endobj
-8 0 obj
-<<
-/Author () /CreationDate (D:20260617210844+00'00') /Creator (\(unspecified\)) /Keywords () /ModDate (D:20260617210844+00'00') /Producer (xhtml2pdf <https://github.com/xhtml2pdf/xhtml2pdf/>) 
-  /Subject () /Title () /Trapped /False
 >>
-endobj
-9 0 obj
-<<
-/Count 1 /First 10 0 R /Last 10 0 R /Type /Outlines
->>
-endobj
-10 0 obj
-<<
-/Dest [ 4 0 R /Fit ] /Parent 9 0 R /Title (STATEMENT OF ACCOUNT)
->>
-endobj
-11 0 obj
-<<
-/Count 2 /Kids [ 4 0 R 6 0 R ] /Type /Pages
->>
-endobj
-12 0 obj
-<<
-/Filter [ /ASCII85Decode /FlateDecode ] /Length 3581
->>
-stream
-GauHPbBDW"'&EF8YfuaEBflZQbYE2K::_0#Z/hK491GclFnG0"EbFt;"-=]L68VQ$8D/j[,M&tHK(f>#JeWg@r$KD/fb1";'OAI$LeopV66lt+1``:El,A-*^<"'"B-#ENP9`b^OM<(J-PF%8R@pVGPp"!WjliW&2]7qF9L9dgR%rnD-,;KA.9sWcLiAUn0#$pqkfn'gpB_96j$1q%0_uTSr`u=k.&5e2=T.pth5&BgD7W!-?ka`,M)!le>N!m#2agbE6o'$A'$qh^2tt-_0RSdl-t7q6ctL/HU@f0<VQ1f.[k^V:7"^=%6j`jSV2sj.l"N?)hP+F:cX4,IBU!p>=6iig0W]l?9=L=H1>cnS,a(RIQsWcc,O8AV>!AT4`<5u-b%&<*nX+R<`5.'K4J58J4pVo8N[+AZoFXr,%TRM(Zgue*qQlS`#LhF'\)SpKH]J@i2g5emBp#mKp8[Q*Q$e62%<_5ALl7.i\6pf:4On\E@jL,rg-)K<YG`B!ioM9mS*jL@#E+N;hN:.\@T'tYEOsBN<k%_D4UBbQ$H,]ue&OZX[j1Oc_hZ)',Pp`drH'a-*BS;94:*2E'035\q12FZc;E!i4,7N(S#p$ugFB0]j-SlZ/9_OCUEUgLP!'9s-C>Fi32Ie7+fEtTP`![o*P$MhIEqEZq@Pum0!dMS(;d6];%npG\?i(R!3^\hU77K3cW7AZ?ip!^<"BZ7mVXj"g]NoWb8FE1oeeMB4C-4G"3Ar2+pWbkfBrOKLG9_(&&pOMTVUh!F?[i.!R)E!0n^nVT,\ArC,Cl/_O-#I#KF@tE`PMA>!ct1dds?)TO,b?bA/UUB7$\.&4c:a+T#NVPcc9jLDWHW^_dim/tbZ+P%X"C[s"F!-p3@H5f=l=^f/P%0e_P`!$cM8:`,je-)eu$NX+/Q$ulo2L)6oP[N$`R'o0q&2>X!sVH7;`43;ca,:;K5#9cYu8cjG4,)P:`Q%T/E7DVJte8;$UikR%D<Rp?\8X*3#*.7?'VBn#Z^%j@F^VjF7I(#I)oB5Lg=.-Nl>k*hCi%YLK.Dr"=],^rN3pgejf!C]SAdYuumQV&,n"37+Lc`?L\FA2)h,!,V\k-NG!XS-S!"n*_2Ot<YPI#Z]3b6#[?-#XT2$krN-J5KGeIClNIjG=<6jG`6_]2YKWN+>$ef$4YopO&Y?b_!c^.%MBq9LmIKJMT+PXH((,2#k1P1pY/00.%'/08]Q*kMW+r?9;bN7lt$mN3YY5K7%$q0Y+e=6N#[fZ[D]k%O>VSE7pNs,f=>]5"qG4[27]AILWsL7GeQGpOnBTsCIblAB"Q-o)(W.$9^\hC+RUP&/aiH1OeG.P!=+:->;6;od?[,r?*akSTR]'#aaL,R1<Ff6i>E`<(H_J#P1gb2me$hkXqS/[F&U$._\O)*U`Z84(qf?t;S`A0uI-KgpXK5Cgh@84dMaaA!.+8LC>FVjC(J,%X+=A\t7UqHloEJ]aeGI*0E=S8G\PqE<Z-aYrhF3:rf4&dW\5]NQLQQI0>N8P$o)gu1kGnp#IP"Gb*=&s7Olr`9^>Y.+8PVio-pBefX[/@W?>Dm+N6:MD(pp9qA$6;U82j['T:!(WS3,U\YNLJ#Kr'$JNK5=-[k*4lgjY.+8PB/':;r]T.fJ'?B6l!eR`!Z"A2kn2')*XT&=n<pa2XP!Am\<*4ARU-V`Ng'earGP9k2$VZ9rT5>K,PcYZ[..kDg4!E,6BcMRk.aa?Y^=N5W)S(<F7:9ZRL$-"B[kGLKZ*tP.7c(XZmHX#&g\^Y$0L@e_43Wb/0L1p"@MZiI%ZiFrcQ2arc]_f0s9Am;,"1haPFr&EPD:(mdeCLQbjV&VtmdRdbb/\qcYYd-@%gU@YnCVY`T;Vo-PdGh6&=W&#Z%!0KW#Z,jBfF,,G@D^\Z3QgnfDDkF6$4`N`/#$`H16:J@b*oT<DT+KuN7:9-$nR<PTkP=O,tqFW@DQ23\=qBBQ32PK[P=<M692AnVA0/>B+npff.C]d^/hjGpA@+SWWN'bg<?p^$PdhUs)nat67VrTgcSDh8:H5nI/Ru_]",.I$o$Jhkjr7`m/9R8lU;&UU\c(%X&=6CkN3g#[>m8><E4>BD[=Y*XV,BRs\!u$"JHt0LKaViAs#)aR=1tf$Qf,IDj2#9s>$%ofi=tP_ON_/0r?TAIMOi=<eh_Ujd85W1q,Y*[M$qDR@']@^1$n!;2?f`(%If9W(7,L!:eb"P;YFkbiK[r%%-_IQ6F3DBR&&KPjTut+=i(`IllN4^Jml@)ReRH88FG!YpAE)"Gl8cE>rHkQ)7DQt0[.3_sI2>nrj.hac8(Hpe4nb$G7=WCCrk8X^<;sH.r?<XSR8JCJ@9NWC_?*HS9;M>ba)Yfm^2,@$X6j$DhY'j#YC53B,EBT?7NbJbb][%L[/W])O)P<$NBj'dR-e^VP;k1b`Yg"_-de<Ff[#C/8Ps3[)p[@k,EO8lVX+B#e/,FjPtVF%&Yh$\+/`?^;i<WcFVim9psBTh9nOrPTJm8A8OHTV%G#,VDfqR'*FV5aYV?6+'2?#'BF,0K_3GnbRtUsl;>i]\\DVZX8^!$oaI94AgE8cjOCOrU)T7PBJ63#s1"=N5`/doK=;o78fT/#9#Jq`W/-FrMkbeW);G1=o7k#`o)[NpbfS[&;Te(cu0sI2X`/b''ZNq,c^a^:ZT/m8',![[gdl%b%U+%0#M]f85ChEk?@t?o;_FW5095S9<TtK$8XP*G(#nfW.9,i\Z)T7P*J63`"Z[qo)L\NS1&?>k52@r+40HURa+L*c-["8"O6(HGfQWR5k2\<.'fS[&;Te(cu0ed3>(bL1f&=>n:=9cdH$DYjA*<^!e+I7a:X28QC,F\1CYm:uc^mJ,1[.pmk+F;/Q\?'>48VaPY=gRd0&gW86@LVm-K6T*W&Bb&.LAKSYpb<'d9*6mQq[nVZ5aV\2AUkU"rR;rbC1.FPlIcBY<>Sl%Q8OmqO<>HBfg,I;+>A]RYr#//5lB+tE#&I`<A7nbnKXLnENoc^9>`4uL`[!-U6iO*lNK51N`%71B'[>[8.Ym!:d6gn(R"j(%$6)>lpL]<"Gin*'^eI2jo]$),aJI/W1P!H8M,mWmcl\ANn?M#-DY2^AJ$2DL(V%-f&F^OJQW,3V.%=1R'lahKA\9^`2[4`m[1EY&P`)2=9OJW@DqT$[J7!l+F;/Q]DcUkkt&K`eqC-XqCi3g_uT+/ZPGb_L_l6TYmdkn2/Dfi&+O-B+I35_]4S0o`*kh@-:))Y@(g@,ihm!#;G1?ErRiO7ffcVfUh(!H&L<0`fc@C758FOK,![[]ZTDc9Id/%8MZC"=bjLk+q@QHt\6&ljARK]%XMp5(!mqCN?$j#BF2EXc\+F)@+G.T>TU1(W(PCLo1ep<LliI%:iso&I"PAVla9BF#5Tl%"5VN!7#E`!cFZ6!PZo5&7i=K!JL%3.LI]inn^jOWD5d!)Am'T"ZTT9umaqJD%e+*p?5"%aZm2U+9fk[Vm0HYE?J3<+VB?SH9HIfS@ZY'L*Lsrg;@>K\%CCbm(6>-o7Gqdf5gi.tG5T&WLfK$Hei=)DG(ueuM)Ffqa#M;5Im5Nj_cBmN0?2Pd*,(i_~>endstream
-endobj
-13 0 obj
-<<
-/Filter [ /ASCII85Decode /FlateDecode ] /Length 3140
->>
-stream
-Gau`X?$"c1'n,h[^gjet1\`(!Z>\UNfpT9_&mLoeBD.%akr!Z2b"F1'rU1+d,"Os-E?LBa4r*(KH]R*+7,S\4,?4VPgHY.nK`!q[mlrMC312uD('YqMs,1..0E/WZU40FsFNB)jV/]+0RKc)VVQag&DMP:M/t+>5Rt^/J%:5,eZ65:W%bG%$'Y>lH9]LHoV,"ud8&g0@P[qM0?`@J!\#tnt;-g+L:Yp*6j7ee;?U'\KmpuEa])7o^>PM[?O]^!I<3hAVI*Q'!eRCfsai@DlH!7kDgME!PY@LsNjn^^8*&Mr*"H4Xje%E7*,)kO674/T>FQ+\KaS^Q(NrkG]BjHTATF"]Ojpqr^@`Bi+-uCC'3(Ur#LOAj*jsjjA'68<i7rL`BOlfUGN(6hklkuEm)?l#&VKut9J&#)F7YJp!P<27LNgZ-Xm3X>*MXi^sWHuW9AXogaXP,5sE^O`o+0]*!-$_9WQ!:&;mD>&abX-q='o:Y.W,!-6#"]NtXn)4]XE*TJqH/Hr=EL'5_DFHoc%T$E.b!tar978Xj.DY[Zg*U!6Z0Y%kLFVM)Kj0_r$(6c,XH8[VKAWG$>^D/P<b(?P`ob0a!c%q8/\XAN"Vt"\>QP:2ThhCIP0+_9J+5lGEGO=]dVGLRHKM+I^Oj21+C-@b[Y4K1khJ5M(sCPekeJ`[$ILRbDo$6&1>$LeB.?(M+j.,iZh^Fc`pR1q!DTi5$.?:jM/[rl(Q7+Z?j]7]ma:i@"1j3=7tuLi\qK.f(K6\Ob@i3("^S!l":TJUd[[,rT8c[D!._X1YR#$@[^AB;Vb'Gl[qY'7EBKB-Z?M_5C#_Hr$#b#Z$m"Whk>"Mc2=qr7bZ'^9Cc\d.'G>V7nd]anEdcOZ+'<P:T.X`98Xt=6Dr_;E0'Da[![&Oq%#nsAjo_W;823$fHF0L99hk(LFkh_fq.++M>>3s3H[Oa%)UY:#2s3>R%b#K>'Fb79Zq']OO$q3?=rL%Z,m@*+-RA5ar\EBf@BlYUHLel*Q$5Q#Y0!XaYW56&Pgl"806fQ1H[c3*rD.8q2DaHR@*-e*E.+f6eF%:4[450rQ3/;lJn4E`fB[!42V^GiNYV8QHr,!PA*VFb^&%DEqRkg=kNPBU5ZcM3I*r>bS&4dHeD8.3Q"c0nXd:Wh5sg,jg/0?rB"A)Eq2l3-H\H?@TC8lR@9Z'#o5GE',6K2R,I"NjIFOm_AO$OE?7-X1R-6r!B)O%d2$+'e%E9`42A^&H_Bqa9<aWCeAj:a-B<2l)4md[*\4Hdl&;tLS!;sXh!Ys#8C(2jD"2Yn#:]0o9TF29)4mTk*k.D+l&9deR?lsbS`_/^Z1]VbGY^?_K9UHn+).$eV&6(D3jDu[o3N(DqG]))1=u4r`js4[oAY,rJ3%7NK(GHBIS]1<\f7FVT/$9Wc035t3IP3s*5b->a)LS[`T_Tc6I\5UrV+Pi(Ya;sb=/E"0r8DPicqZkqO\.9X+lR+9/ZCim`i3Q`[)?3Z\+)%V)gpa7`]J#:g_d%@_<@/5`q3Xk%_Vrq]LfA1H:2tU=&^q'[a-3#0CA+i0adaBpaoHnsCQtlO)-V?u6=88+uImW<fK"@8./n`r\Qt;T!m[g0W1o"p^8[XH/O++t\nOGmoLqP(6^fOMc@T&3hHA[5=!*H/p+j6qKqO(<Flc#/hrB9#=!a5A,<Gf*i-5X_:[&8.c;H@ZW\f#Z_O69>bi[P/d^a.KX?BYVl^-,Q%8G<.rcLYU0Rr@t>bJWSrYN<SK%8h;BF(M"OUX;PXIc'[1&P]T`QKC4Qsco5l.)8ciaA?prs9nrOBV,c"HKN$t(6J2jC%L01dRm1UJGeeEO'.iMD";P]"$CP=L)`ra(,!c#+sB!!bAnsCP)76iF6A(Cus0TYS\j&-IeX+`9DKe\\0!^ZCOUu"m"FdOJ/h;BF(M"OUX;FCV20h<>fih[onQ3QbeO??g)T9=_.%Bt[To#O0^Lm!j')Rt\kne_q9[+(1Nf!@MkCBb$+<]$g#Udtk,ed>n0Ns1,8"Oq0p_HL@VjY9'2ML\kK-EIs%?ln"Aa/'uU<XTSl$=b3>"bPg3L?WS=gFkUo:Y(:X@XXJo'PW,1f5)Rj!V'&#:oabg?*g4e?&5,9J6Ek)G0L6_a?r.IP)rj!d-R21j=qcPBi,%Pf!@Mkj*$Kb%r"J-.RK#+(q2S="*lF/X<O='L2jh82O)5bi@4nD2)&olbQd[[5!CS6+gj.cgE!VO4;J3cQQ"`TB7!(f\J&\qqBuY!dK2Fta+/C`$)lAU3LluTnP^&s9*72G7iq4eP_@P$JK2pE5b-8sK^&JPO5QD],O7^#dAVqa+r\JfNnHZ=$O!L9W23qHm[+IF0gW=,J6ED@fc@E84L1$/91;B'%:aS%C`ncBK&ib_p\icOd4qt'eqZ(kI?]C!Bn9mJC`nc>nPTurWs+qtZ_9KeLnBi\=rM'tbm*d\6U$<hOBO6_m$\CE0d'5*W?L)im1Z#G,O7^#dAVqa+t_%,Qjr,]5d6,r=tRtdQjr.36+Df&=rM!sbQd[[5!CS6+gkL@h(]ki@t>bJ;6k,dp1d@6E8=&,'`f%+:4cW[!&"Md$Yc,!ZZH1rl>[VTE"^G?&%Eb)!=EP2"LE1N%O'C$fDPqh:M\E_3ZOm<:eWP1oUQb2JE8HsTN7R_3j$^.b[DVjSN*[W/^FFA+a\GBCW'MTdoHp^*$t^u:OVGIfn<I7CH@:9K]*hhk11Z4AEZF.kegCeK.)tXNV:bSX$d&a=9`J\E9kAD6A$\LTbC^mI^.02\)2gEL-_QK#CSDPa<bWI&g*Vg:')KU]AqSV;o=24opOchmsim.L9LW$T0I88F]GQD2-Er?e$<)ZMcI<2SCVSGM:fY'$H@:f[@:7[H08.$7oU-rGT[X8f`&N>;fA<hmp&Xqc!BZH.9h:?c^@!4CU2f-Rsb*_Wa=t/K_dPRpZfF+%saF)e1Vo%C8kNf.i8#-9jUoY8@dFgO0<*cP`r:Rq1lh(Sr/[n(6=qI0?HTT\gEKgC.TK;7I`OE?A%Xhe5MP619;"*n'6`=:pZLRYN1.p(!GuL(?M1GMQ4bL1\/3"Zh9X.-G//OX5.EGi4YkR=(G<K00QHRMq(K!J&KKJbHH3a=7Y[h1hN*@f:UQj=$kZjl'J@^Z=$8ZF1.QCr#[XW!Vl~>endstream
 endobj
 xref
-0 14
+0 8
 0000000000 65535 f 
-0000000061 00000 n 
-0000000112 00000 n 
-0000000219 00000 n 
-0000000331 00000 n 
-0000000536 00000 n 
-0000000651 00000 n 
-0000000856 00000 n 
-0000000941 00000 n 
-0000001193 00000 n 
-0000001266 00000 n 
-0000001353 00000 n 
-0000001419 00000 n 
-0000005092 00000 n 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000121 00000 n 
+0000000218 00000 n 
+0000000320 00000 n 
+0000000425 00000 n 
+0000012760 00000 n 
 trailer
 <<
-/ID 
-[<c3ccd5d8eb74565fd36b0084991a5397><c3ccd5d8eb74565fd36b0084991a5397>]
-% ReportLab generated PDF document -- digest (opensource)
-
-/Info 8 0 R
-/Root 7 0 R
-/Size 14
+/Size 8
+/Root 1 0 R
 >>
 startxref
-8324
+12922
 %%EOF
