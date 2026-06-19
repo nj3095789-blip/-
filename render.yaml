@@ -1,0 +1,37 @@
+# Render Blueprint — deploys Skyline with one click.
+# Docs: https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: skyline-immigration
+    runtime: node
+    plan: free
+    region: frankfurt
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true        # Render generates a strong secret automatically
+      - key: CURRENCY
+        value: usd
+      # ── Admin account (change the password after first login) ──
+      - key: ADMIN_EMAIL
+        value: admin@skyline.com
+      - key: ADMIN_PASSWORD
+        value: Skyline@Admin2026
+      # ── Stripe (leave blank = demo mode; paste real keys to go live) ──
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: STRIPE_PUBLISHABLE_KEY
+        sync: false
+      - key: STRIPE_WEBHOOK_SECRET
+        sync: false
+      # APP_URL is set automatically from the Render service URL below.
+      - key: APP_URL
+        fromService:
+          type: web
+          name: skyline-immigration
+          property: host

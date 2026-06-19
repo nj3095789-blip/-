@@ -6,7 +6,10 @@ import { stripe, stripeEnabled, stripeLive, publishableKey } from '../stripe.js'
 const router = Router();
 
 function appUrl() {
-  return (process.env.APP_URL || 'http://localhost:3000').replace(/\/$/, '');
+  let url = (process.env.APP_URL || 'http://localhost:3000').trim().replace(/\/$/, '');
+  // Some hosts (e.g. Render) expose the bare hostname — ensure a scheme is present.
+  if (!/^https?:\/\//i.test(url)) url = 'https://' + url;
+  return url;
 }
 
 // Tells the frontend which payment mode is active.
