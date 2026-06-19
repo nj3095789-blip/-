@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>الوظائف الدولية | Skyline</title>
+  <link rel="icon" href="/assets/logo.webp" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header class="site">
+    <div class="container nav">
+      <a class="brand" href="/"><img src="/assets/logo.webp" alt="Skyline" /><div class="name">SKYLINE<span>GLOBAL MIGRATION</span></div></a>
+      <nav class="nav-links" id="navLinks">
+        <a href="/">الرئيسية</a><a href="/services.html">الخدمات</a><a href="/jobs.html">الوظائف الدولية</a><a href="/#process">كيف نعمل</a><a href="/#contact">تواصل معنا</a>
+      </nav>
+      <div class="nav-actions" id="navActions"></div>
+      <button class="menu-toggle" id="menuToggle">☰</button>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>وظائف دولية برعاية التأشيرة</h1>
+      <p>فرص عمل حقيقية لدى أصحاب عمل معتمدين حول العالم. تقدّم بنقرة ودعنا نتولّى تأشيرتك.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="filters">
+        <div class="field"><label>بحث</label><input id="fq" placeholder="المسمّى الوظيفي أو المدينة" /></div>
+        <div class="field"><label>الدولة</label><select id="fcountry"><option value="">كل الدول</option></select></div>
+        <div class="field"><label>المجال</label><select id="fcategory"><option value="">كل المجالات</option></select></div>
+        <div class="field" style="display:flex;align-items:flex-end"><button class="btn btn-navy btn-block" id="searchBtn">بحث</button></div>
+      </div>
+      <p id="resultCount" style="color:var(--muted);margin-bottom:18px"></p>
+      <div class="grid grid-2" id="jobsGrid"></div>
+    </div>
+  </section>
+
+  <!-- Apply modal -->
+  <div class="modal-bg" id="applyModal">
+    <div class="modal">
+      <button class="close" id="closeApply">×</button>
+      <h3 id="applyTitle">التقديم على الوظيفة</h3>
+      <p style="color:var(--muted);margin-bottom:18px" id="applySub"></p>
+      <div class="alert" id="applyAlert"></div>
+      <form id="applyForm">
+        <div class="field"><label>الاسم الكامل</label><input name="full_name" required /></div>
+        <div class="field"><label>البريد الإلكتروني</label><input name="email" type="email" required /></div>
+        <div class="field"><label>رقم الهاتف</label><input name="phone" /></div>
+        <div class="field"><label>الجنسية</label><input name="nationality" /></div>
+        <div class="field"><label>نبذة عن خبرتك</label><textarea name="message" placeholder="سنوات الخبرة، المؤهلات، اللغات…"></textarea></div>
+        <button class="btn btn-gold btn-block" type="submit" id="applyBtn">إرسال الطلب</button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="site">
+    <div class="container"><div class="foot-bottom">© <span id="year"></span> Skyline Global Migration & Visa Experts.</div></div>
+  </footer>
+
+  <script src="/js/app.js"></script>
+  <script>
+    el('#year').textContent = new Date().getFullYear();
+    let me = null;
+
+    async function loadJobs() {
+      const q = el('#fq').value, c = el('#fcountry').value, cat = el('#fcategory').value;
+      const params = new URLSearchParams();
+      if (q) params.set('q', q); if (c) params.set('country', c); if (cat) params.set('category', cat);
+      const { jobs, countries, categories } = await api('/jobs?' + params);
+
+      if (el('#fcountry').options.length === 1)
+        el('#fcountry').innerHTML = '<option value="">كل الدول</option>' + countries.map(x => `<option>${x}</option>`).join('');
+      if (el('#fcategory').options.length === 1)
+        el('#fcategory').innerHTML = '<option value="">كل المجالات</option>' + categories.map(x => `<option>${x}</option>`).join('');
+
+      el('#resultCount').textContent = `${jobs.length} وظيفة متاحة`;
+      el('#jobsGrid').innerHTML = jobs.length ? jobs.map(j => `
+        <div class="job reveal">
+          <div style="display:flex;justify-content:space-between;align-items:start;gap:10px">
+            <h3 style="color:var(--navy-900)">${j.title}</h3>
+            ${j.visa_support ? '<span class="badge-visa">رعاية تأشيرة ✓</span>' : ''}
+          </div>
+          <div class="meta">
+            <span>📍 ${j.city ? j.city + '، ' : ''}${j.country}</span>
+            <span>🏷️ ${j.category}</span>
+            <span>⏱️ ${j.employment}</span>
+          </div>
+          ${j.salary ? `<p class="salary">💰 ${j.salary}</p>` : ''}
+          <p style="color:var(--muted);margin:10px 0">${j.description}</p>
+          ${j.requirements ? `<p style="font-size:.88rem;color:var(--navy-700)"><strong>المتطلبات:</strong> ${j.requirements}</p>` : ''}
+          <button class="btn btn-gold" style="margin-top:14px" data-job="${j.id}" data-title="${j.title}" data-country="${j.country}">تقدّم الآن</button>
+        </div>`).join('') : '<p style="color:var(--muted)">لا توجد وظائف مطابقة لبحثك حالياً.</p>';
+      initReveal();
+      els('[data-job]').forEach(b => b.onclick = () => openApply(b.dataset));
+    }
+
+    function openApply(d) {
+      el('#applyForm').dataset.job = d.job;
+      el('#applyTitle').textContent = `التقديم على: ${d.title}`;
+      el('#applySub').textContent = `${d.country} · سيتم ربط طلبك بفريق التوظيف الدولي.`;
+      if (me) {
+        el('#applyForm').full_name.value = me.full_name || '';
+        el('#applyForm').email.value = me.email || '';
+      }
+      el('#applyModal').classList.add('show');
+    }
+    el('#closeApply').onclick = () => el('#applyModal').classList.remove('show');
+    el('#applyModal').onclick = (e) => { if (e.target.id === 'applyModal') e.target.classList.remove('show'); };
+
+    el('#applyForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = el('#applyBtn'); btn.disabled = true; btn.textContent = 'جارٍ الإرسال…';
+      const data = Object.fromEntries(new FormData(e.target));
+      data.job_id = e.target.dataset.job;
+      try {
+        const r = await api('/applications', { method: 'POST', body: JSON.stringify(data) });
+        showAlert(el('#applyAlert'), `✓ تمّ استلام طلبك بنجاح! رقم المرجع: ${r.reference}`, 'ok');
+        e.target.reset();
+      } catch (err) { showAlert(el('#applyAlert'), err.message); }
+      btn.disabled = false; btn.textContent = 'إرسال الطلب';
+    });
+
+    el('#searchBtn').onclick = loadJobs;
+    el('#fq').addEventListener('keydown', (e) => { if (e.key === 'Enter') loadJobs(); });
+    el('#fcountry').onchange = loadJobs; el('#fcategory').onchange = loadJobs;
+
+    (async () => { try { me = (await api('/auth/me')).user; } catch {} loadJobs(); })();
+  </script>
+</body>
+</html>

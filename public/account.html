@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>حسابي | Skyline</title>
+  <link rel="icon" href="/assets/logo.webp" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header class="site">
+    <div class="container nav">
+      <a class="brand" href="/"><img src="/assets/logo.webp" alt="Skyline" /><div class="name">SKYLINE<span>GLOBAL MIGRATION</span></div></a>
+      <nav class="nav-links" id="navLinks">
+        <a href="/">الرئيسية</a><a href="/services.html">الخدمات</a><a href="/jobs.html">الوظائف الدولية</a><a href="/#contact">تواصل معنا</a>
+      </nav>
+      <div class="nav-actions" id="navActions"></div>
+      <button class="menu-toggle" id="menuToggle">☰</button>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container" style="max-width:520px">
+      <!-- Auth panel -->
+      <div id="authPanel">
+        <div class="head"><div class="eyebrow">مرحباً بك</div><h2>الدخول إلى حسابك</h2></div>
+        <div class="form-card">
+          <div class="tabs">
+            <button id="tabLogin" class="active">تسجيل الدخول</button>
+            <button id="tabRegister">حساب جديد</button>
+          </div>
+          <div class="alert" id="authAlert"></div>
+
+          <form id="loginForm">
+            <div class="field"><label>البريد الإلكتروني</label><input name="email" type="email" required /></div>
+            <div class="field"><label>كلمة المرور</label><input name="password" type="password" required /></div>
+            <button class="btn btn-gold btn-block" type="submit">دخول</button>
+          </form>
+
+          <form id="registerForm" style="display:none">
+            <div class="field"><label>الاسم الكامل</label><input name="full_name" required /></div>
+            <div class="field"><label>البريد الإلكتروني</label><input name="email" type="email" required /></div>
+            <div class="field"><label>رقم الهاتف</label><input name="phone" /></div>
+            <div class="field"><label>كلمة المرور</label><input name="password" type="password" minlength="6" required /></div>
+            <button class="btn btn-gold btn-block" type="submit">إنشاء الحساب</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Dashboard -->
+      <div id="dashPanel" style="display:none;max-width:100%">
+        <div class="head"><div class="eyebrow">لوحتي</div><h2 id="welcome"></h2></div>
+        <div class="form-card">
+          <p style="color:var(--muted)">مرحباً بك في حسابك على سكايلاين. من هنا يمكنك متابعة رحلتك.</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:20px">
+            <a class="btn btn-gold" href="/services.html">احجز خدمة جديدة</a>
+            <a class="btn btn-navy" href="/jobs.html">تصفّح الوظائف</a>
+            <a class="btn btn-ghost" id="adminLink" href="/admin.html" style="display:none">لوحة التحكم</a>
+            <button class="btn btn-ghost" id="logoutBtn2">تسجيل الخروج</button>
+          </div>
+          <div id="profileInfo" style="margin-top:24px"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site"><div class="container"><div class="foot-bottom">© <span id="year"></span> Skyline Global Migration & Visa Experts.</div></div></footer>
+
+  <script src="/js/app.js"></script>
+  <script>
+    el('#year').textContent = new Date().getFullYear();
+
+    function switchTab(which) {
+      const login = which === 'login';
+      el('#tabLogin').classList.toggle('active', login);
+      el('#tabRegister').classList.toggle('active', !login);
+      el('#loginForm').style.display = login ? 'block' : 'none';
+      el('#registerForm').style.display = login ? 'none' : 'block';
+      el('#authAlert').className = 'alert';
+    }
+    el('#tabLogin').onclick = () => switchTab('login');
+    el('#tabRegister').onclick = () => switchTab('register');
+    if (location.hash === '#register') switchTab('register');
+
+    function showDash(user) {
+      el('#authPanel').style.display = 'none';
+      el('#dashPanel').style.display = 'block';
+      el('#welcome').textContent = `أهلاً، ${user.full_name}`;
+      if (user.role === 'admin') el('#adminLink').style.display = 'inline-flex';
+      el('#profileInfo').innerHTML = `
+        <div class="table-wrap"><table>
+          <tr><th>البريد</th><td>${user.email}</td></tr>
+          <tr><th>الهاتف</th><td>${user.phone || '—'}</td></tr>
+          <tr><th>نوع الحساب</th><td>${user.role === 'admin' ? 'مشرف' : 'عميل'}</td></tr>
+        </table></div>`;
+    }
+
+    el('#loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      try {
+        const { user } = await api('/auth/login', { method: 'POST', body: JSON.stringify(Object.fromEntries(new FormData(e.target))) });
+        showDash(user);
+      } catch (err) { showAlert(el('#authAlert'), err.message); }
+    });
+    el('#registerForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      try {
+        const { user } = await api('/auth/register', { method: 'POST', body: JSON.stringify(Object.fromEntries(new FormData(e.target))) });
+        showDash(user);
+      } catch (err) { showAlert(el('#authAlert'), err.message); }
+    });
+    el('#logoutBtn2').onclick = async () => { await api('/auth/logout', { method: 'POST' }); location.reload(); };
+
+    (async () => { try { const { user } = await api('/auth/me'); showDash(user); } catch {} })();
+  </script>
+</body>
+</html>

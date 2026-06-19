@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>الخدمات والأسعار | Skyline</title>
+  <link rel="icon" href="/assets/logo.webp" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header class="site">
+    <div class="container nav">
+      <a class="brand" href="/"><img src="/assets/logo.webp" alt="Skyline" /><div class="name">SKYLINE<span>GLOBAL MIGRATION</span></div></a>
+      <nav class="nav-links" id="navLinks">
+        <a href="/">الرئيسية</a><a href="/services.html">الخدمات</a><a href="/jobs.html">الوظائف الدولية</a><a href="/#process">كيف نعمل</a><a href="/#contact">تواصل معنا</a>
+      </nav>
+      <div class="nav-actions" id="navActions"></div>
+      <button class="menu-toggle" id="menuToggle">☰</button>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>الخدمات والأسعار</h1>
+      <p>أسعار شفّافة ودفع آمن عبر بوابة عالمية مشفّرة. اختر خدمتك وابدأ رحلتك اليوم.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="alert" id="topAlert"></div>
+      <div class="grid grid-3" id="servicesGrid"></div>
+    </div>
+  </section>
+
+  <!-- Checkout modal -->
+  <div class="modal-bg" id="checkoutModal">
+    <div class="modal">
+      <button class="close" id="closeCheckout">×</button>
+      <h3>إتمام الطلب والدفع</h3>
+      <p style="color:var(--muted);margin-bottom:18px" id="coSummary"></p>
+      <div class="alert" id="coAlert"></div>
+      <form id="checkoutForm">
+        <div class="field" id="emailField"><label>البريد الإلكتروني (لإرسال الإيصال)</label><input name="email" type="email" required /></div>
+        <button class="btn btn-gold btn-block" type="submit" id="payBtn">المتابعة إلى الدفع الآمن 🔒</button>
+      </form>
+      <p style="text-align:center;color:var(--muted);font-size:.82rem;margin-top:14px">مدعوم بـ Stripe · بياناتك مشفّرة بالكامل</p>
+    </div>
+  </div>
+
+  <footer class="site">
+    <div class="container">
+      <div class="foot-bottom">© <span id="year"></span> Skyline Global Migration & Visa Experts — جميع الحقوق محفوظة.</div>
+    </div>
+  </footer>
+
+  <span class="pay-badge chip" id="payBadge" style="display:none"></span>
+
+  <script src="/js/app.js"></script>
+  <script>
+    el('#year').textContent = new Date().getFullYear();
+    const icons = { globe:'🌍', briefcase:'💼', maple:'🍁', handshake:'🤝', cap:'🎓', family:'👨‍👩‍👧' };
+    let selected = null, me = null, payMode = 'demo';
+
+    if (new URLSearchParams(location.search).get('canceled'))
+      showAlert(el('#topAlert'), 'تمّ إلغاء عملية الدفع. يمكنك المحاولة مرة أخرى في أي وقت.', 'err');
+
+    (async () => {
+      const cfg = await api('/payments/config');
+      payMode = cfg.mode;
+      const badge = el('#payBadge');
+      const labels = { live: ['status-paid','💳 بوابة دفع مباشرة (مدفوعات حقيقية)'], test: ['chip gold','🧪 وضع اختبار Stripe'], demo: ['chip','🧩 وضع محاكاة الدفع'] };
+      badge.textContent = labels[payMode][1];
+      badge.style.display = 'inline-flex';
+      badge.classList.add(payMode === 'live' ? 'ok' : payMode === 'test' ? 'gold' : '');
+
+      try { me = (await api('/auth/me')).user; } catch { me = null; }
+
+      const { services } = await api('/services');
+      el('#servicesGrid').innerHTML = services.map(s => `
+        <div class="card reveal">
+          <div class="icon">${icons[s.icon] || '🌍'}</div>
+          <h3>${s.title_ar}</h3>
+          <p>${s.summary_ar}</p>
+          <div class="price">${money(s.price_cents, s.currency)} <small>/ الخدمة</small></div>
+          <button class="btn btn-gold btn-block" style="margin-top:18px"
+            data-id="${s.id}" data-title="${s.title_ar}" data-price="${money(s.price_cents, s.currency)}">اطلب وادفع الآن</button>
+        </div>`).join('');
+      initReveal();
+
+      els('[data-id]').forEach(b => b.onclick = () => openCheckout(b.dataset));
+    })();
+
+    function openCheckout(d) {
+      selected = d.id;
+      el('#coSummary').innerHTML = `<strong>${d.title}</strong><br />المبلغ المستحق: <strong style="color:var(--navy-800)">${d.price}</strong>`;
+      const emailField = el('#emailField');
+      if (me) { emailField.style.display = 'none'; emailField.querySelector('input').required = false; }
+      else { emailField.style.display = 'block'; emailField.querySelector('input').required = true; }
+      el('#checkoutModal').classList.add('show');
+    }
+    el('#closeCheckout').onclick = () => el('#checkoutModal').classList.remove('show');
+    el('#checkoutModal').onclick = (e) => { if (e.target.id === 'checkoutModal') e.target.classList.remove('show'); };
+
+    el('#checkoutForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = el('#payBtn'); btn.disabled = true; btn.textContent = 'جارٍ التحويل…';
+      const email = e.target.email.value;
+      try {
+        const r = await api('/payments/checkout', { method: 'POST', body: JSON.stringify({ service_id: selected, email }) });
+        location.href = r.url;
+      } catch (err) {
+        showAlert(el('#coAlert'), err.message);
+        btn.disabled = false; btn.textContent = 'المتابعة إلى الدفع الآمن 🔒';
+      }
+    });
+  </script>
+</body>
+</html>
