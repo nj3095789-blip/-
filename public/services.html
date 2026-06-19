@@ -75,7 +75,8 @@
       const labels = { live: ['status-paid','💳 بوابة دفع مباشرة (مدفوعات حقيقية)'], test: ['chip gold','🧪 وضع اختبار Stripe'], demo: ['chip','🧩 وضع محاكاة الدفع'] };
       badge.textContent = labels[payMode][1];
       badge.style.display = 'inline-flex';
-      badge.classList.add(payMode === 'live' ? 'ok' : payMode === 'test' ? 'gold' : '');
+      const badgeClass = payMode === 'live' ? 'ok' : payMode === 'test' ? 'gold' : '';
+      if (badgeClass) badge.classList.add(badgeClass);
 
       try { me = (await api('/auth/me')).user; } catch { me = null; }
 
