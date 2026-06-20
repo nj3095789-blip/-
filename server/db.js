@@ -87,4 +87,15 @@ db.exec(`
   );
 `);
 
+// ── Lightweight migrations (add columns to pre-existing tables) ──
+function ensureColumn(table, column, definition) {
+  const cols = db.prepare(`PRAGMA table_info(${table})`).all();
+  if (!cols.some(c => c.name === column)) {
+    db.exec(`ALTER TABLE ${table} ADD COLUMN ${column} ${definition}`);
+  }
+}
+ensureColumn('applications', 'cv_path', 'TEXT');
+ensureColumn('applications', 'cv_name', 'TEXT');
+ensureColumn('applications', 'admin_note', 'TEXT');
+
 export default db;

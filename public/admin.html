@@ -70,15 +70,20 @@
     async function loadApps() {
       const { applications } = await api('/admin/applications');
       el('#tab-apps').innerHTML = `<div class="table-wrap"><table>
-        <thead><tr><th>#</th><th>الاسم</th><th>البريد</th><th>الجنسية</th><th>وظيفة</th><th>الحالة</th><th>التاريخ</th></tr></thead>
+        <thead><tr><th>#</th><th>الاسم</th><th>البريد</th><th>الجنسية</th><th>وظيفة</th><th>المرفق</th><th>الحالة</th><th>ملاحظة للعميل</th><th>التاريخ</th></tr></thead>
         <tbody>${applications.map(a => `<tr>
           <td>SKY-${String(a.id).padStart(6,'0')}</td><td>${a.full_name}</td><td>${a.email}</td>
           <td>${a.nationality || '—'}</td><td>${a.job_id ? '#' + a.job_id : 'استشارة'}</td>
+          <td>${a.cv_path ? `<a class="chip gold" href="/api/admin/applications/${a.id}/cv">⬇ تحميل</a>` : '—'}</td>
           <td><select data-app="${a.id}" class="statusSel">${STATUSES.map(s => `<option ${s===a.status?'selected':''}>${s}</option>`).join('')}</select></td>
-          <td>${fmtDate(a.created_at)}</td></tr>`).join('') || '<tr><td colspan="7">لا توجد طلبات</td></tr>'}</tbody>
+          <td><input class="noteInp" data-app="${a.id}" value="${(a.admin_note || '').replace(/"/g,'&quot;')}" placeholder="أضف ملاحظة…" style="min-width:160px" /></td>
+          <td>${fmtDate(a.created_at)}</td></tr>`).join('') || '<tr><td colspan="9">لا توجد طلبات</td></tr>'}</tbody>
       </table></div>`;
       els('.statusSel').forEach(sel => sel.onchange = async () => {
         await api('/admin/applications/' + sel.dataset.app, { method: 'PATCH', body: JSON.stringify({ status: sel.value }) });
+      });
+      els('.noteInp').forEach(inp => inp.onchange = async () => {
+        await api('/admin/applications/' + inp.dataset.app, { method: 'PATCH', body: JSON.stringify({ admin_note: inp.value }) });
       });
     }
 

@@ -1,9 +1,15 @@
 import { Router } from 'express';
+import path from 'path';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
 import db from '../db.js';
 import { requireAuth, requireAdmin } from '../auth.js';
 
 const router = Router();
 router.use(requireAuth, requireAdmin);
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const uploadDir = path.join(__dirname, '..', 'data', 'uploads');
 
 router.get('/stats', (_req, res) => {
   const num = (q) => db.prepare(q).get().n;
@@ -21,11 +27,25 @@ router.get('/applications', (_req, res) => {
 });
 
 router.patch('/applications/:id', (req, res) => {
-  const { status } = req.body || {};
+  const { status, admin_note } = req.body || {};
   const allowed = ['received', 'in-review', 'approved', 'rejected', 'completed'];
-  if (!allowed.includes(status)) return res.status(400).json({ error: 'حالة غير صالحة' });
-  db.prepare('UPDATE applications SET status = ? WHERE id = ?').run(status, req.params.id);
+  if (status !== undefined) {
+    if (!allowed.includes(status)) return res.status(400).json({ error: 'حالة غير صالحة' });
+    db.prepare('UPDATE applications SET status = ? WHERE id = ?').run(status, req.params.id);
+  }
+  if (admin_note !== undefined) {
+    db.prepare('UPDATE applications SET admin_note = ? WHERE id = ?').run(admin_note, req.params.id);
+  }
   res.json({ ok: true });
+});
+
+// Securely download an applicant's uploaded document (admin only).
+router.get('/applications/:id/cv', (req, res) => {
+  const row = db.prepare('SELECT cv_path, cv_name FROM applications WHERE id = ?').get(req.params.id);
+  if (!row || !row.cv_path) return res.status(404).json({ error: 'لا يوجد ملف مرفق' });
+  const filePath = path.join(uploadDir, path.basename(row.cv_path));
+  if (!fs.existsSync(filePath)) return res.status(404).json({ error: 'الملف غير موجود' });
+  res.download(filePath, row.cv_name || row.cv_path);
 });
 
 router.get('/payments', (_req, res) => {

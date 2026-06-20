@@ -15,8 +15,9 @@
     <div class="container nav">
       <a class="brand" href="/"><img src="/assets/logo.webp" alt="Skyline" /><div class="name">SKYLINE<span>GLOBAL MIGRATION</span></div></a>
       <nav class="nav-links" id="navLinks">
-        <a href="/">الرئيسية</a><a href="/services.html">الخدمات</a><a href="/jobs.html">الوظائف الدولية</a><a href="/#process">كيف نعمل</a><a href="/#contact">تواصل معنا</a>
+        <a href="/" data-i18n="nav_home">الرئيسية</a><a href="/services.html" data-i18n="nav_services">الخدمات</a><a href="/jobs.html" data-i18n="nav_jobs">الوظائف الدولية</a><a href="/countries.html" data-i18n="nav_countries">أدلّة الدول</a><a href="/#contact" data-i18n="nav_contact">تواصل معنا</a>
       </nav>
+      <button class="lang-toggle" id="langToggle">EN</button>
       <div class="nav-actions" id="navActions"></div>
       <button class="menu-toggle" id="menuToggle">☰</button>
     </div>
@@ -55,6 +56,13 @@
         <div class="field"><label>رقم الهاتف</label><input name="phone" /></div>
         <div class="field"><label>الجنسية</label><input name="nationality" /></div>
         <div class="field"><label>نبذة عن خبرتك</label><textarea name="message" placeholder="سنوات الخبرة، المؤهلات، اللغات…"></textarea></div>
+        <div class="field">
+          <label>السيرة الذاتية / المستندات (اختياري)</label>
+          <label class="file-drop" id="fileDrop">
+            <span id="fileLabel">📎 اضغط لرفع ملف (PDF, Word, صورة — حتى 8MB)</span>
+            <input type="file" name="cv" id="cvInput" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" />
+          </label>
+        </div>
         <button class="btn btn-gold btn-block" type="submit" id="applyBtn">إرسال الطلب</button>
       </form>
     </div>
@@ -114,15 +122,25 @@
     el('#closeApply').onclick = () => el('#applyModal').classList.remove('show');
     el('#applyModal').onclick = (e) => { if (e.target.id === 'applyModal') e.target.classList.remove('show'); };
 
+    // show chosen file name
+    el('#cvInput').addEventListener('change', (e) => {
+      const f = e.target.files[0];
+      el('#fileLabel').textContent = f ? `✓ ${f.name}` : '📎 اضغط لرفع ملف (PDF, Word, صورة — حتى 8MB)';
+    });
+
     el('#applyForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       const btn = el('#applyBtn'); btn.disabled = true; btn.textContent = 'جارٍ الإرسال…';
-      const data = Object.fromEntries(new FormData(e.target));
-      data.job_id = e.target.dataset.job;
+      const fd = new FormData(e.target);
+      fd.append('job_id', e.target.dataset.job);
       try {
-        const r = await api('/applications', { method: 'POST', body: JSON.stringify(data) });
+        // multipart upload — no JSON headers so the browser sets the boundary
+        const res = await fetch('/api/applications', { method: 'POST', credentials: 'include', body: fd });
+        const r = await res.json();
+        if (!res.ok) throw new Error(r.error || 'تعذّر الإرسال');
         showAlert(el('#applyAlert'), `✓ تمّ استلام طلبك بنجاح! رقم المرجع: ${r.reference}`, 'ok');
         e.target.reset();
+        el('#fileLabel').textContent = '📎 اضغط لرفع ملف (PDF, Word, صورة — حتى 8MB)';
       } catch (err) { showAlert(el('#applyAlert'), err.message); }
       btn.disabled = false; btn.textContent = 'إرسال الطلب';
     });

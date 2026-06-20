@@ -15,8 +15,9 @@
     <div class="container nav">
       <a class="brand" href="/"><img src="/assets/logo.webp" alt="Skyline" /><div class="name">SKYLINE<span>GLOBAL MIGRATION</span></div></a>
       <nav class="nav-links" id="navLinks">
-        <a href="/">الرئيسية</a><a href="/services.html">الخدمات</a><a href="/jobs.html">الوظائف الدولية</a><a href="/#contact">تواصل معنا</a>
+        <a href="/" data-i18n="nav_home">الرئيسية</a><a href="/services.html" data-i18n="nav_services">الخدمات</a><a href="/jobs.html" data-i18n="nav_jobs">الوظائف الدولية</a><a href="/countries.html" data-i18n="nav_countries">أدلّة الدول</a><a href="/#contact" data-i18n="nav_contact">تواصل معنا</a>
       </nav>
+      <button class="lang-toggle" id="langToggle">EN</button>
       <div class="nav-actions" id="navActions"></div>
       <button class="menu-toggle" id="menuToggle">☰</button>
     </div>
@@ -63,6 +64,11 @@
           </div>
           <div id="profileInfo" style="margin-top:24px"></div>
         </div>
+
+        <div style="margin-top:30px">
+          <div class="head" style="margin-bottom:20px;text-align:start"><h2 style="font-size:1.6rem">متابعة طلباتي</h2></div>
+          <div id="myApps"><p style="color:var(--muted)">جارٍ التحميل…</p></div>
+        </div>
       </div>
     </div>
   </section>
@@ -85,6 +91,10 @@
     el('#tabRegister').onclick = () => switchTab('register');
     if (location.hash === '#register') switchTab('register');
 
+    const STAGES = ['received', 'in-review', 'approved', 'completed'];
+    const STAGE_AR = { received: 'تم الاستلام', 'in-review': 'قيد المراجعة', approved: 'مقبول', rejected: 'مرفوض', completed: 'مكتمل' };
+    const fmtDate = (s) => new Date(s.replace(' ', 'T') + 'Z').toLocaleDateString('ar');
+
     function showDash(user) {
       el('#authPanel').style.display = 'none';
       el('#dashPanel').style.display = 'block';
@@ -96,6 +106,36 @@
           <tr><th>الهاتف</th><td>${user.phone || '—'}</td></tr>
           <tr><th>نوع الحساب</th><td>${user.role === 'admin' ? 'مشرف' : 'عميل'}</td></tr>
         </table></div>`;
+      loadMyApps();
+    }
+
+    async function loadMyApps() {
+      try {
+        const { applications } = await api('/applications/mine');
+        if (!applications.length) {
+          el('#myApps').innerHTML = `<div class="track-card" style="text-align:center;color:var(--muted)">
+            لا توجد طلبات بعد. <a href="/jobs.html" style="color:var(--gold-500);font-weight:700">تقدّم على وظيفة</a> أو
+            <a href="/services.html" style="color:var(--gold-500);font-weight:700">احجز خدمة</a>.</div>`;
+          return;
+        }
+        el('#myApps').innerHTML = applications.map(a => {
+          const rejected = a.status === 'rejected';
+          const idx = STAGES.indexOf(a.status);
+          const steps = STAGES.map((s, i) => `<div class="ts ${i <= idx ? 'done' : ''}"></div>`).join('');
+          const title = a.job_title ? `${a.job_title} · ${a.job_country}` : (a.target || 'استشارة / خدمة');
+          return `<div class="track-card">
+            <div class="top">
+              <div><strong style="color:var(--navy-900)">${title}</strong>
+                <div style="color:var(--muted);font-size:.85rem">SKY-${String(a.id).padStart(6,'0')} · ${fmtDate(a.created_at)}</div></div>
+              <span class="status-pill status-${a.status}">${STAGE_AR[a.status] || a.status}</span>
+            </div>
+            ${rejected ? '' : `<div class="track-steps">${steps}</div>`}
+            ${a.admin_note ? `<p style="margin-top:12px;color:var(--navy-700);font-size:.9rem"><strong>ملاحظة الفريق:</strong> ${a.admin_note}</p>` : ''}
+          </div>`;
+        }).join('');
+      } catch {
+        el('#myApps').innerHTML = '<p style="color:var(--muted)">تعذّر تحميل الطلبات.</p>';
+      }
     }
 
     el('#loginForm').addEventListener('submit', async (e) => {

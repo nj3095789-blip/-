@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>أدلّة الدول | Skyline</title>
+  <link rel="icon" href="/assets/logo.webp" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header class="site">
+    <div class="container nav">
+      <a class="brand" href="/"><img src="/assets/logo.webp" alt="Skyline" /><div class="name">SKYLINE<span>GLOBAL MIGRATION</span></div></a>
+      <nav class="nav-links" id="navLinks">
+        <a href="/" data-i18n="nav_home">الرئيسية</a><a href="/services.html" data-i18n="nav_services">الخدمات</a><a href="/jobs.html" data-i18n="nav_jobs">الوظائف الدولية</a><a href="/countries.html" data-i18n="nav_countries">أدلّة الدول</a><a href="/#contact" data-i18n="nav_contact">تواصل معنا</a>
+      </nav>
+      <button class="lang-toggle" id="langToggle">EN</button>
+      <div class="nav-actions" id="navActions"></div>
+      <button class="menu-toggle" id="menuToggle">☰</button>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>أدلّة الدول</h1>
+      <p>تعرّف على أبرز وجهات الهجرة وبرامجها ومتطلباتها — واختر وجهتك بثقة.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-3" id="countriesGrid"></div>
+    </div>
+  </section>
+
+  <section class="section band-navy">
+    <div class="container center">
+      <div class="head reveal" style="margin-bottom:24px">
+        <h2 style="color:#fff">لست متأكداً من الوجهة المناسبة؟</h2>
+        <p style="color:var(--silver)">احجز استشارة مع خبير وسنرشّح لك أفضل دولة وبرنامج حسب ملفك.</p>
+      </div>
+      <a class="btn btn-gold" href="/services.html">احجز استشارة الآن</a>
+    </div>
+  </section>
+
+  <footer class="site"><div class="container"><div class="foot-bottom">© <span id="year"></span> Skyline Global Migration & Visa Experts.</div></div></footer>
+
+  <script src="/js/app.js"></script>
+  <script>
+    el('#year').textContent = new Date().getFullYear();
+    const countries = [
+      { flag:'🇨🇦', name:'كندا', programs:'Express Entry · PNP · دراسة', time:'6 – 12 شهر', note:'وجهة مثالية للعمالة الماهرة بنظام نقاط واضح وفرص إقامة دائمة.' },
+      { flag:'🇦🇺', name:'أستراليا', programs:'Skilled Visa · 482 · دراسة', time:'5 – 10 أشهر', note:'برامج مهنية مطلوبة ورواتب مرتفعة مع مسار للإقامة الدائمة.' },
+      { flag:'🇩🇪', name:'ألمانيا', programs:'EU Blue Card · باحث عن عمل', time:'3 – 8 أشهر', note:'سوق عمل قوي للمهندسين والتقنيين مع تأشيرة الكفاءات.' },
+      { flag:'🇳🇿', name:'نيوزيلندا', programs:'Skilled Migrant · موسمي', time:'4 – 9 أشهر', note:'جودة حياة عالية وبرامج عمل موسمية وزراعية مدعومة.' },
+      { flag:'🇳🇱', name:'هولندا', programs:'Highly Skilled Migrant', time:'2 – 5 أشهر', note:'إجراءات سريعة للموظفين المهرة وبيئة عمل بالإنجليزية.' },
+      { flag:'🇦🇪', name:'الإمارات', programs:'تأشيرة عمل · ذهبية', time:'2 – 6 أسابيع', note:'فرص خليجية واسعة في الضيافة والمالية والتقنية بإجراءات سريعة.' },
+      { flag:'🇶🇦', name:'قطر', programs:'تأشيرة عمل', time:'3 – 6 أسابيع', note:'رواتب معفاة من الضرائب وحزم مزايا قوية للمحاسبين والمهنيين.' },
+      { flag:'🇵🇱', name:'بولندا', programs:'تأشيرة عمل · إقامة', time:'2 – 4 أشهر', note:'بوابة للعمل داخل الاتحاد الأوروبي بتكاليف معيشة منخفضة.' },
+      { flag:'🇬🇧', name:'بريطانيا', programs:'Skilled Worker · دراسة', time:'3 – 6 أشهر', note:'رعاية تأشيرة من أصحاب عمل معتمدين في قطاعات متعددة.' },
+    ];
+    el('#countriesGrid').innerHTML = countries.map(c => `
+      <div class="card reveal">
+        <div style="font-size:2.6rem;margin-bottom:6px">${c.flag}</div>
+        <h3>${c.name}</h3>
+        <p>${c.note}</p>
+        <div style="margin-top:14px;display:flex;flex-direction:column;gap:6px;font-size:.9rem">
+          <span class="chip gold">البرامج: ${c.programs}</span>
+          <span class="chip">⏱️ المدة التقديرية: ${c.time}</span>
+        </div>
+        <a class="btn btn-navy btn-block" style="margin-top:16px" href="/services.html">ابدأ التقديم</a>
+      </div>`).join('');
+    initReveal();
+  </script>
+</body>
+</html>
