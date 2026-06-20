@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>تم الدفع | Skyline</title>
-  <link rel="icon" href="/assets/logo.webp" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" href="/assets/logo.svg" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Marcellus&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body style="background:var(--navy-grad);min-height:100vh;display:grid;place-items:center;padding:20px">
@@ -24,7 +24,7 @@
 
     function render(ok, ref, extra = '') {
       el('#result').innerHTML = `
-        <img src="/assets/logo.webp" style="width:64px;margin:0 auto 12px" />
+        <img src="/assets/logo.svg" style="width:64px;margin:0 auto 12px" />
         <div style="font-size:3.5rem">${ok ? '✅' : '⚠️'}</div>
         <h2 style="color:#fff;margin:10px 0">${ok ? 'تمّ الدفع بنجاح!' : 'لم يكتمل الدفع'}</h2>
         <p style="color:var(--muted);margin-bottom:8px">${ok

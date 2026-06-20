@@ -99,6 +99,7 @@ const I18N = {
   why_title: ['لأنّ مستقبلك يستحق خبراء حقيقيين', 'Because your future deserves real experts'],
   process_eyebrow: ['آلية العمل', 'How it works'],
   process_title: ['أربع خطوات تفصلك عن وجهتك', 'Four steps to your destination'],
+  trust_lead: ['معتمدون وموثوقون عالمياً', 'Globally accredited & trusted'],
   testi_eyebrow: ['قصص نجاح', 'Success Stories'],
   testi_title: ['عملاء وصلوا إلى وجهتهم', 'Clients who reached their destination'],
   faq_eyebrow: ['الأسئلة الشائعة', 'FAQ'],
