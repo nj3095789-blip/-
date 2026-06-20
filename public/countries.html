@@ -48,6 +48,7 @@
 
   <footer class="site"><div class="container"><div class="foot-bottom">© <span id="year"></span> Skyline Global Migration & Visa Experts.</div></div></footer>
 
+  <script src="/js/icons.js"></script>
   <script src="/js/app.js"></script>
   <script>
     el('#year').textContent = new Date().getFullYear();
@@ -68,8 +69,8 @@
         <h3>${c.name}</h3>
         <p>${c.note}</p>
         <div style="margin-top:14px;display:flex;flex-direction:column;gap:6px;font-size:.9rem">
-          <span class="chip gold">البرامج: ${c.programs}</span>
-          <span class="chip">⏱️ المدة التقديرية: ${c.time}</span>
+          <span class="chip gold">${ICON('sparkle',14)} البرامج: ${c.programs}</span>
+          <span class="chip">${ICON('clock',14)} المدة التقديرية: ${c.time}</span>
         </div>
         <a class="btn btn-navy btn-block" style="margin-top:16px" href="/services.html">ابدأ التقديم</a>
       </div>`).join('');

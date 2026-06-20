@@ -183,6 +183,14 @@ function initCounters() {
   });
 }
 
+// ── Inject professional SVG icons into [data-icon] elements ──
+function initIcons() {
+  if (typeof window.ICON !== 'function') return;
+  els('[data-icon]').forEach(n => {
+    n.innerHTML = window.ICON(n.dataset.icon, +(n.dataset.iconSize) || 24);
+  });
+}
+
 // ── FAQ accordion ──
 function initFaq() {
   els('.faq-q').forEach(q => q.onclick = () => q.parentElement.classList.toggle('open'));
@@ -193,6 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initReveal();
   initCounters();
   initFaq();
+  initIcons();
   injectWhatsApp();
   loadNavUser();
   initLang();

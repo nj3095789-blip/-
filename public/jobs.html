@@ -72,6 +72,7 @@
     <div class="container"><div class="foot-bottom">© <span id="year"></span> Skyline Global Migration & Visa Experts.</div></div>
   </footer>
 
+  <script src="/js/icons.js"></script>
   <script src="/js/app.js"></script>
   <script>
     el('#year').textContent = new Date().getFullYear();
@@ -93,14 +94,14 @@
         <div class="job reveal">
           <div style="display:flex;justify-content:space-between;align-items:start;gap:10px">
             <h3 style="color:#fff">${j.title}</h3>
-            ${j.visa_support ? '<span class="badge-visa">رعاية تأشيرة ✓</span>' : ''}
+            ${j.visa_support ? `<span class="badge-visa">${ICON('shield',15)} رعاية تأشيرة</span>` : ''}
           </div>
           <div class="meta">
-            <span>📍 ${j.city ? j.city + '، ' : ''}${j.country}</span>
-            <span>🏷️ ${j.category}</span>
-            <span>⏱️ ${j.employment}</span>
+            <span>${ICON('mapPin',16)} ${j.city ? j.city + '، ' : ''}${j.country}</span>
+            <span>${ICON('tag',16)} ${j.category}</span>
+            <span>${ICON('clock',16)} ${j.employment}</span>
           </div>
-          ${j.salary ? `<p class="salary">💰 ${j.salary}</p>` : ''}
+          ${j.salary ? `<p class="salary">${ICON('money',17)} ${j.salary}</p>` : ''}
           <p style="color:var(--muted);margin:10px 0">${j.description}</p>
           ${j.requirements ? `<p style="font-size:.88rem;color:var(--navy-700)"><strong>المتطلبات:</strong> ${j.requirements}</p>` : ''}
           <button class="btn btn-gold" style="margin-top:14px" data-job="${j.id}" data-title="${j.title}" data-country="${j.country}">تقدّم الآن</button>

@@ -215,8 +215,15 @@ header.site {
 .card .icon {
   width: 62px; height: 62px; border-radius: 16px; display: grid; place-items: center;
   background: linear-gradient(145deg, rgba(201,161,74,.22), rgba(201,161,74,.06));
-  border: 1px solid var(--gold-brd); color: var(--gold-400); font-size: 1.6rem; margin-bottom: 20px;
+  border: 1px solid var(--gold-brd); color: var(--gold-400); margin-bottom: 20px;
 }
+svg.ic { display: block; flex-shrink: 0; vertical-align: middle; }
+.feature .fi svg.ic, .feature .fi { color: var(--gold-400); }
+.trust .badge .ico svg.ic { color: var(--gold-400); }
+.chip svg.ic, .badge-visa svg.ic, .job .meta svg.ic, .field label svg.ic, .salary svg.ic { vertical-align: -3px; }
+.topbar svg.ic { vertical-align: -3px; }
+.badge-visa { display: inline-flex; align-items: center; gap: 4px; }
+.job .salary { display: flex; align-items: center; gap: 6px; }
 .card h3 { color: #fff; font-size: 1.28rem; margin-bottom: 8px; }
 .card p { color: var(--muted); font-size: .97rem; }
 .card .price { margin-top: 16px; font-weight: 800; font-size: 1.5rem; background: var(--gold-grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
