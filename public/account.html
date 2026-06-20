@@ -125,7 +125,7 @@
           const title = a.job_title ? `${a.job_title} · ${a.job_country}` : (a.target || 'استشارة / خدمة');
           return `<div class="track-card">
             <div class="top">
-              <div><strong style="color:var(--navy-900)">${title}</strong>
+              <div><strong style="color:#fff">${title}</strong>
                 <div style="color:var(--muted);font-size:.85rem">SKY-${String(a.id).padStart(6,'0')} · ${fmtDate(a.created_at)}</div></div>
               <span class="status-pill status-${a.status}">${STAGE_AR[a.status] || a.status}</span>
             </div>

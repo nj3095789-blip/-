@@ -12,7 +12,7 @@
   <div class="form-card center" style="max-width:480px;width:100%">
     <div id="result">
       <div style="font-size:3.5rem">⏳</div>
-      <h2 style="color:var(--navy-900);margin:10px 0">جارٍ تأكيد عملية الدفع…</h2>
+      <h2 style="color:#fff;margin:10px 0">جارٍ تأكيد عملية الدفع…</h2>
     </div>
   </div>
 
@@ -26,7 +26,7 @@
       el('#result').innerHTML = `
         <img src="/assets/logo.webp" style="width:64px;margin:0 auto 12px" />
         <div style="font-size:3.5rem">${ok ? '✅' : '⚠️'}</div>
-        <h2 style="color:var(--navy-900);margin:10px 0">${ok ? 'تمّ الدفع بنجاح!' : 'لم يكتمل الدفع'}</h2>
+        <h2 style="color:#fff;margin:10px 0">${ok ? 'تمّ الدفع بنجاح!' : 'لم يكتمل الدفع'}</h2>
         <p style="color:var(--muted);margin-bottom:8px">${ok
           ? 'شكراً لثقتك بسكايلاين. تواصل معك فريقنا خلال 24 ساعة لبدء إجراءات ملفك.'
           : 'لم نتمكّن من تأكيد الدفع. إذا تم خصم مبلغ منك فسيُرد تلقائياً.'}</p>
@@ -44,7 +44,7 @@
       try {
         const r = await api('/payments/verify?session_id=' + encodeURIComponent(sessionId));
         const paid = r.status === 'paid';
-        render(paid, r.reference, paid ? `<p style="color:var(--navy-800);font-weight:700">${money(r.amount_cents, r.currency)}</p>` : '');
+        render(paid, r.reference, paid ? `<p style="color:var(--gold-300);font-weight:700;font-size:1.3rem">${money(r.amount_cents, r.currency)}</p>` : '');
       } catch (err) { render(false); }
     })();
   </script>

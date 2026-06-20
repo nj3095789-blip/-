@@ -98,7 +98,7 @@
 
     function openCheckout(d) {
       selected = d.id;
-      el('#coSummary').innerHTML = `<strong>${d.title}</strong><br />المبلغ المستحق: <strong style="color:var(--navy-800)">${d.price}</strong>`;
+      el('#coSummary').innerHTML = `<strong style="color:#fff">${d.title}</strong><br />المبلغ المستحق: <strong style="color:var(--gold-300)">${d.price}</strong>`;
       const emailField = el('#emailField');
       if (me) { emailField.style.display = 'none'; emailField.querySelector('input').required = false; }
       else { emailField.style.display = 'block'; emailField.querySelector('input').required = true; }
