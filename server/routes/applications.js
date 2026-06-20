@@ -24,19 +24,28 @@ const storage = multer.diskStorage({
 const allowed = ['.pdf', '.doc', '.docx', '.jpg', '.jpeg', '.png'];
 const upload = multer({
   storage,
-  limits: { fileSize: 8 * 1024 * 1024 }, // 8 MB
+  limits: { fileSize: 10 * 1024 * 1024 }, // 10 MB per file
   fileFilter: (_req, file, cb) => {
     const ext = path.extname(file.originalname).toLowerCase();
-    cb(allowed.includes(ext) ? null : new Error('نوع الملف غير مدعوم'), allowed.includes(ext));
+    cb(allowed.includes(ext) ? null : new Error('نوع الملف غير مدعوم (PDF, Word, صورة)'), allowed.includes(ext));
   },
 });
 
-// Submit an application — optional CV/document attachment.
-router.post('/', attachUser, (req, res) => {
-  upload.single('cv')(req, res, (err) => {
-    if (err) return res.status(400).json({ error: err.message || 'تعذّر رفع الملف' });
+// Accept the document fields used by the full application form (and legacy 'cv').
+const docFields = upload.fields([
+  { name: 'cv', maxCount: 1 },
+  { name: 'passport', maxCount: 1 },
+  { name: 'photo', maxCount: 1 },
+  { name: 'certificates', maxCount: 8 },
+  { name: 'documents', maxCount: 10 },
+]);
 
-    const { full_name, email, phone, nationality, target, message, job_id } = req.body || {};
+// Submit an application — supports multiple document attachments.
+router.post('/', attachUser, (req, res) => {
+  docFields(req, res, (err) => {
+    if (err) return res.status(400).json({ error: err.message || 'تعذّر رفع الملفات' });
+
+    const { full_name, email, phone, nationality, target, message, job_id, dob, service_type, current_location } = req.body || {};
     if (!full_name || !email) return res.status(400).json({ error: 'الاسم والبريد مطلوبان' });
     if (!emailRe.test(email)) return res.status(400).json({ error: 'بريد إلكتروني غير صالح' });
 
@@ -46,9 +55,13 @@ router.post('/', attachUser, (req, res) => {
       if (job) validJobId = job.id;
     }
 
+    const files = req.files || {};
+    const firstCv = (files.cv && files.cv[0]) || (files.passport && files.passport[0]) || null;
+
     const info = db.prepare(`
-      INSERT INTO applications (user_id, job_id, full_name, email, phone, nationality, target, message, cv_path, cv_name)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      INSERT INTO applications (user_id, job_id, full_name, email, phone, nationality, target, message,
+        dob, service_type, current_location, cv_path, cv_name)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `).run(
       req.user ? req.user.id : null,
       validJobId,
@@ -58,11 +71,27 @@ router.post('/', attachUser, (req, res) => {
       nationality || null,
       target || null,
       message || null,
-      req.file ? req.file.filename : null,
-      req.file ? req.file.originalname : null
+      dob || null,
+      service_type || null,
+      current_location || null,
+      firstCv ? firstCv.filename : null,
+      firstCv ? firstCv.originalname : null
     );
+    const appId = info.lastInsertRowid;
 
-    res.json({ ok: true, id: info.lastInsertRowid, reference: `SKY-${String(info.lastInsertRowid).padStart(6, '0')}` });
+    // Persist every uploaded file as a document row.
+    const insertDoc = db.prepare('INSERT INTO documents (application_id, field, file_path, file_name) VALUES (?, ?, ?, ?)');
+    const labels = { cv: 'السيرة الذاتية', passport: 'جواز السفر', photo: 'صورة شخصية', certificates: 'شهادة', documents: 'مستند' };
+    const tx = db.transaction(() => {
+      for (const field of Object.keys(files)) {
+        for (const f of files[field]) {
+          insertDoc.run(appId, labels[field] || field, f.filename, f.originalname);
+        }
+      }
+    });
+    tx();
+
+    res.json({ ok: true, id: appId, reference: `SKY-${String(appId).padStart(6, '0')}` });
   });
 });
 

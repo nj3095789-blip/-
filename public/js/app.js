@@ -73,6 +73,7 @@ const I18N = {
   nav_services: ['الخدمات', 'Services'],
   nav_jobs: ['الوظائف الدولية', 'Jobs'],
   nav_countries: ['أدلّة الدول', 'Country Guides'],
+  nav_apply: ['تقديم طلب', 'Apply'],
   nav_process: ['كيف نعمل', 'How it works'],
   nav_contact: ['تواصل معنا', 'Contact'],
   nav_account: ['حسابي', 'My Account'],

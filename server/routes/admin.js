@@ -23,7 +23,14 @@ router.get('/stats', (_req, res) => {
 });
 
 router.get('/applications', (_req, res) => {
-  res.json({ applications: db.prepare('SELECT * FROM applications ORDER BY created_at DESC LIMIT 200').all() });
+  const apps = db.prepare(`
+    SELECT a.*,
+      (SELECT json_group_array(json_object('id', d.id, 'field', d.field, 'name', d.file_name))
+       FROM documents d WHERE d.application_id = a.id) AS docs
+    FROM applications a ORDER BY a.created_at DESC LIMIT 200
+  `).all();
+  apps.forEach(a => { try { a.docs = JSON.parse(a.docs || '[]'); } catch { a.docs = []; } });
+  res.json({ applications: apps });
 });
 
 router.patch('/applications/:id', (req, res) => {
@@ -39,7 +46,16 @@ router.patch('/applications/:id', (req, res) => {
   res.json({ ok: true });
 });
 
-// Securely download an applicant's uploaded document (admin only).
+// Securely download a single uploaded document by its id (admin only).
+router.get('/documents/:id/download', (req, res) => {
+  const row = db.prepare('SELECT file_path, file_name FROM documents WHERE id = ?').get(req.params.id);
+  if (!row) return res.status(404).json({ error: 'الملف غير موجود' });
+  const filePath = path.join(uploadDir, path.basename(row.file_path));
+  if (!fs.existsSync(filePath)) return res.status(404).json({ error: 'الملف غير موجود على الخادم' });
+  res.download(filePath, row.file_name);
+});
+
+// Legacy single-CV download (kept for backward compatibility).
 router.get('/applications/:id/cv', (req, res) => {
   const row = db.prepare('SELECT cv_path, cv_name FROM applications WHERE id = ?').get(req.params.id);
   if (!row || !row.cv_path) return res.status(404).json({ error: 'لا يوجد ملف مرفق' });

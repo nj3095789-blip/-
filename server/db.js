@@ -87,6 +87,18 @@ db.exec(`
   );
 `);
 
+db.exec(`
+  CREATE TABLE IF NOT EXISTS documents (
+    id             INTEGER PRIMARY KEY AUTOINCREMENT,
+    application_id INTEGER NOT NULL REFERENCES applications(id) ON DELETE CASCADE,
+    field          TEXT    NOT NULL,
+    file_path      TEXT    NOT NULL,
+    file_name      TEXT    NOT NULL,
+    created_at     TEXT    NOT NULL DEFAULT (datetime('now'))
+  );
+  CREATE INDEX IF NOT EXISTS idx_documents_app ON documents(application_id);
+`);
+
 // ── Lightweight migrations (add columns to pre-existing tables) ──
 function ensureColumn(table, column, definition) {
   const cols = db.prepare(`PRAGMA table_info(${table})`).all();
@@ -97,5 +109,8 @@ function ensureColumn(table, column, definition) {
 ensureColumn('applications', 'cv_path', 'TEXT');
 ensureColumn('applications', 'cv_name', 'TEXT');
 ensureColumn('applications', 'admin_note', 'TEXT');
+ensureColumn('applications', 'dob', 'TEXT');
+ensureColumn('applications', 'service_type', 'TEXT');
+ensureColumn('applications', 'current_location', 'TEXT');
 
 export default db;

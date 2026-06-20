@@ -73,8 +73,8 @@
         <thead><tr><th>#</th><th>الاسم</th><th>البريد</th><th>الجنسية</th><th>وظيفة</th><th>المرفق</th><th>الحالة</th><th>ملاحظة للعميل</th><th>التاريخ</th></tr></thead>
         <tbody>${applications.map(a => `<tr>
           <td>SKY-${String(a.id).padStart(6,'0')}</td><td>${a.full_name}</td><td>${a.email}</td>
-          <td>${a.nationality || '—'}</td><td>${a.job_id ? '#' + a.job_id : 'استشارة'}</td>
-          <td>${a.cv_path ? `<a class="chip gold" href="/api/admin/applications/${a.id}/cv">⬇ تحميل</a>` : '—'}</td>
+          <td>${a.nationality || '—'}</td><td>${a.job_id ? '#' + a.job_id : (a.service_type || 'استشارة')}</td>
+          <td style="min-width:150px">${(a.docs && a.docs.length) ? a.docs.map(d => `<a class="chip gold" style="margin:2px" href="/api/admin/documents/${d.id}/download" title="${d.name}">⬇ ${d.field}</a>`).join('') : '—'}</td>
           <td><select data-app="${a.id}" class="statusSel">${STATUSES.map(s => `<option ${s===a.status?'selected':''}>${s}</option>`).join('')}</select></td>
           <td><input class="noteInp" data-app="${a.id}" value="${(a.admin_note || '').replace(/"/g,'&quot;')}" placeholder="أضف ملاحظة…" style="min-width:160px" /></td>
           <td>${fmtDate(a.created_at)}</td></tr>`).join('') || '<tr><td colspan="9">لا توجد طلبات</td></tr>'}</tbody>
