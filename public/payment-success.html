@@ -11,11 +11,12 @@
 <body style="background:var(--navy-grad);min-height:100vh;display:grid;place-items:center;padding:20px">
   <div class="form-card center" style="max-width:480px;width:100%">
     <div id="result">
-      <div style="font-size:3.5rem">⏳</div>
+      <div data-icon="clock2" data-icon-size="48" style="display:flex;justify-content:center;color:var(--gold-400)"></div>
       <h2 style="color:#fff;margin:10px 0">جارٍ تأكيد عملية الدفع…</h2>
     </div>
   </div>
 
+  <script src="/js/icons.js"></script>
   <script src="/js/app.js"></script>
   <script>
     const p = new URLSearchParams(location.search);
@@ -25,7 +26,7 @@
     function render(ok, ref, extra = '') {
       el('#result').innerHTML = `
         <img src="/assets/logo.svg" style="width:64px;margin:0 auto 12px" />
-        <div style="font-size:3.5rem">${ok ? '✅' : '⚠️'}</div>
+        <div style="display:flex;justify-content:center;color:${ok ? 'var(--ok)' : 'var(--warn)'}">${ICON(ok ? 'check' : 'alert', 64)}</div>
         <h2 style="color:#fff;margin:10px 0">${ok ? 'تمّ الدفع بنجاح!' : 'لم يكتمل الدفع'}</h2>
         <p style="color:var(--muted);margin-bottom:8px">${ok
           ? 'شكراً لثقتك بسكايلاين. تواصل معك فريقنا خلال 24 ساعة لبدء إجراءات ملفك.'

@@ -63,16 +63,25 @@
       { code:'pl', name:'بولندا', programs:'تأشيرة عمل · إقامة', time:'2 – 4 أشهر', note:'بوابة للعمل داخل الاتحاد الأوروبي بتكاليف معيشة منخفضة.' },
       { code:'gb', name:'بريطانيا', programs:'Skilled Worker · دراسة', time:'3 – 6 أشهر', note:'رعاية تأشيرة من أصحاب عمل معتمدين في قطاعات متعددة.' },
     ];
+    const grad = {
+      ca:['#b81c2b','#6e0f18'], au:['#13315f','#0a1a3a'], de:['#3a3a3a','#b8862f'],
+      nz:['#13315f','#0a1a3a'], nl:['#21468b','#ae1c28'], ae:['#00803a','#024d27'],
+      qa:['#8a1538','#560d24'], pl:['#dc143c','#8a0d26'], gb:['#0b2a6b','#08183f'],
+    };
     el('#countriesGrid').innerHTML = countries.map(c => `
-      <div class="card reveal">
-        <div style="margin-bottom:10px">${FLAG(c.code, 50)}</div>
-        <h3>${c.name}</h3>
-        <p>${c.note}</p>
-        <div style="margin-top:14px;display:flex;flex-direction:column;gap:6px;font-size:.9rem">
-          <span class="chip gold">${ICON('sparkle',14)} البرامج: ${c.programs}</span>
-          <span class="chip">${ICON('clock',14)} المدة التقديرية: ${c.time}</span>
+      <div class="card reveal country-card">
+        <div class="country-banner" style="background:linear-gradient(135deg,${(grad[c.code]||['#13315f','#0a1a3a'])[0]},${(grad[c.code]||['#13315f','#0a1a3a'])[1]})">
+          <span class="cb-flag">${FLAG(c.code, 56)}</span>
         </div>
-        <a class="btn btn-navy btn-block" style="margin-top:16px" href="/services.html">ابدأ التقديم</a>
+        <div class="country-body">
+          <h3>${c.name}</h3>
+          <p>${c.note}</p>
+          <div style="margin-top:14px;display:flex;flex-direction:column;gap:6px;font-size:.9rem;align-items:center">
+            <span class="chip gold">${ICON('sparkle',14)} ${c.programs}</span>
+            <span class="chip">${ICON('clock',14)} ${c.time}</span>
+          </div>
+          <a class="btn btn-navy btn-block" style="margin-top:16px" href="/services.html">ابدأ التقديم</a>
+        </div>
       </div>`).join('');
     initReveal();
   </script>

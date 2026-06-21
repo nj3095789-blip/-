@@ -396,6 +396,15 @@ th { background: rgba(255,255,255,.05); color: var(--gold-300); font-weight: 800
 /* ── Global offices ── */
 .office { border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow-sm); border: 1px solid var(--glass-brd); background: var(--glass); transition: transform .25s, border-color .25s; }
 .office:hover { transform: translateY(-5px); border-color: var(--gold-brd); }
+/* ── Country cards with themed banner ── */
+.country-card { padding: 0; overflow: hidden; }
+.country-banner { height: 92px; position: relative; display: flex; align-items: flex-end; justify-content: center; }
+.country-banner::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 30% 20%, rgba(255,255,255,.14), transparent 60%); }
+.country-banner::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,19,34,.95), transparent 70%); }
+.cb-flag { position: relative; z-index: 2; transform: translateY(50%); }
+.country-body { padding: 38px 24px 26px; text-align: center; }
+.country-body .chip { justify-content: center; }
+
 .office .flag { margin-bottom: 10px; }
 .flag-ic { display: block; filter: drop-shadow(0 4px 10px rgba(0,0,0,.4)); }
 .office .flag .flag-ic { margin-inline-start: 0; }

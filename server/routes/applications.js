@@ -5,6 +5,7 @@ import fs from 'fs';
 import { fileURLToPath } from 'url';
 import db from '../db.js';
 import { attachUser, requireAuth } from '../auth.js';
+import { notifyNewApplication, notifyContact } from '../mailer.js';
 
 const router = Router();
 const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -91,7 +92,9 @@ router.post('/', attachUser, (req, res) => {
     });
     tx();
 
-    res.json({ ok: true, id: appId, reference: `SKY-${String(appId).padStart(6, '0')}` });
+    const reference = `SKY-${String(appId).padStart(6, '0')}`;
+    notifyNewApplication({ full_name, email, phone, target, service_type, job_id: validJobId }, reference);
+    res.json({ ok: true, id: appId, reference });
   });
 });
 
@@ -115,6 +118,7 @@ router.post('/contact', (req, res) => {
   if (!emailRe.test(email)) return res.status(400).json({ error: 'بريد إلكتروني غير صالح' });
   db.prepare('INSERT INTO messages (name, email, subject, body) VALUES (?, ?, ?, ?)')
     .run(name.trim(), email.toLowerCase(), subject || null, body);
+  notifyContact({ name, email, subject, body });
   res.json({ ok: true });
 });
 
