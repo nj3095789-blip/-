@@ -57,7 +57,7 @@ const FLAG_CONTENT = {
 function FLAG(code, size = 40) {
   const id = 'flg' + (_flagSeq++);
   const c = FLAG_CONTENT[code] || FLAG_CONTENT.de;
-  return `<svg class="flag-ic" viewBox="0 0 24 24" width="${size}" height="${size}" aria-hidden="true"><defs><clipPath id="${id}"><circle cx="12" cy="12" r="11.5"/></clipPath></defs><g clip-path="url(#${id})">${c}</g><circle cx="12" cy="12" r="11" fill="none" stroke="rgba(201,161,74,.6)" stroke-width="1.3"/></svg>`;
+  return `<svg class="flag-ic" viewBox="0 0 24 24" width="${size}" height="${size}" aria-hidden="true"><defs><clipPath id="${id}"><circle cx="12" cy="12" r="11.5"/></clipPath></defs><g clip-path="url(#${id})">${c}</g><circle cx="12" cy="12" r="11" fill="none" stroke="rgba(123,140,255,.7)" stroke-width="1.3"/></svg>`;
 }
 
 window.ICON = ICON;

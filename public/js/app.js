@@ -85,7 +85,7 @@ const I18N = {
   nav_logout: ['خروج', 'Logout'],
   nav_start: ['ابدأ الآن', 'Get Started'],
   hero_badge: ['✦ شريكك الموثوق منذ التأسيس · أكثر من 30 دولة', '✦ Your trusted partner · 30+ countries'],
-  hero_title: ['طريقك نحو مستقبل عالمي يبدأ مع سكايلاين', 'Your path to a global future starts with Skyline'],
+  hero_title: ['طريقك نحو <span class="gold-text">مستقبل عالمي</span><br />يبدأ مع سكايلاين <span class="cursor">_</span>', 'Your path to a <span class="gold-text">global future</span><br />starts with Skyline <span class="cursor">_</span>'],
   hero_lead: ['نحوّل حلم الهجرة وتأمين فرصة العمل إلى واقع. استشارات قانونية معتمدة، تأشيرات عمل ودراسة، ووظائف دولية برعاية كاملة للتأشيرة — كل ذلك تحت سقف واحد.',
     'We turn your migration and career dreams into reality: certified legal advice, work & study visas, and international jobs with full visa sponsorship — all under one roof.'],
   hero_cta1: ['احجز استشارتك الآن', 'Book a consultation'],
@@ -127,6 +127,10 @@ function applyLang(lang, root = document) {
   root.querySelectorAll('[data-i18n]').forEach(node => {
     const t = I18N[node.dataset.i18n];
     if (t && t[i] != null) node.textContent = t[i];
+  });
+  root.querySelectorAll('[data-i18n-rich]').forEach(node => {
+    const t = I18N[node.dataset.i18nRich];
+    if (t && t[i] != null) node.innerHTML = t[i];
   });
   root.querySelectorAll('[data-i18n-ph]').forEach(node => {
     const t = I18N[node.dataset.i18nPh];
