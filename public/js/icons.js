@@ -38,5 +38,26 @@ function ICON(name, size = 24, stroke = 1.7) {
 // Maps the DB service.icon keys to professional icon names.
 const SERVICE_ICON = { globe: 'globe', briefcase: 'briefcase', maple: 'leaf', handshake: 'userCheck', cap: 'cap', family: 'users' };
 
+// ── Circular SVG flag medallions (cross-platform, gold-ringed) ──
+let _flagSeq = 0;
+const FLAG_CONTENT = {
+  de: '<rect width="24" height="8" fill="#000"/><rect y="8" width="24" height="8" fill="#dd0000"/><rect y="16" width="24" height="8" fill="#ffce00"/>',
+  nl: '<rect width="24" height="8" fill="#ae1c28"/><rect y="8" width="24" height="8" fill="#fff"/><rect y="16" width="24" height="8" fill="#21468b"/>',
+  pl: '<rect width="24" height="12" fill="#fff"/><rect y="12" width="24" height="12" fill="#dc143c"/>',
+  ae: '<rect width="24" height="24" fill="#fff"/><rect width="24" height="8" fill="#00732f"/><rect y="16" width="24" height="8" fill="#000"/><rect width="7" height="24" fill="#ce1126"/>',
+  ca: '<rect width="24" height="24" fill="#fff"/><rect width="6.5" height="24" fill="#ff0000"/><rect x="17.5" width="6.5" height="24" fill="#ff0000"/><path d="M12 6.6l.9 2.3 2.2-.8-.9 2.2 2.4.2-1.8 1.5 2.3 1.2-2.5.2.6 2.4-2.1-1-.6 2.4-.6-2.4-2.1 1 .6-2.4-2.5-.2 2.3-1.2-1.8-1.5 2.4-.2-.9-2.2 2.2.8z" fill="#ff0000"/>',
+  gb: '<rect width="24" height="24" fill="#012169"/><path d="M0 0 24 24M24 0 0 24" stroke="#fff" stroke-width="4"/><path d="M0 0 24 24M24 0 0 24" stroke="#c8102e" stroke-width="2"/><rect x="9.5" width="5" height="24" fill="#fff"/><rect y="9.5" width="24" height="5" fill="#fff"/><rect x="10.5" width="3" height="24" fill="#c8102e"/><rect y="10.5" width="24" height="3" fill="#c8102e"/>',
+  au: '<rect width="24" height="24" fill="#012169"/><path d="M0 0 11 8M11 0 0 8" stroke="#fff" stroke-width="2"/><rect x="4.5" width="2" height="8" fill="#fff"/><rect y="3" width="11" height="2" fill="#fff"/><g fill="#fff"><circle cx="18" cy="6" r="1"/><circle cx="20.5" cy="11.5" r="1"/><circle cx="16" cy="13" r="1"/><circle cx="19" cy="17" r="1"/><circle cx="6" cy="18.5" r="1.3"/></g>',
+  nz: '<rect width="24" height="24" fill="#012169"/><path d="M0 0 11 8M11 0 0 8" stroke="#fff" stroke-width="2"/><rect x="4.5" width="2" height="8" fill="#fff"/><rect y="3" width="11" height="2" fill="#fff"/><g fill="#c8102e" stroke="#fff" stroke-width=".4"><circle cx="18" cy="7" r="1"/><circle cx="20.5" cy="13" r="1"/><circle cx="16" cy="14.5" r="1"/><circle cx="18.5" cy="18.5" r="1"/></g>',
+  sa: '<rect width="24" height="24" fill="#006c35"/><rect x="4" y="13" width="16" height="1.5" rx=".7" fill="#fff"/><rect x="6" y="9.2" width="12" height="1.7" rx=".5" fill="#fff"/>',
+  qa: '<rect width="24" height="24" fill="#8a1538"/><rect width="8" height="24" fill="#fff"/>',
+};
+function FLAG(code, size = 40) {
+  const id = 'flg' + (_flagSeq++);
+  const c = FLAG_CONTENT[code] || FLAG_CONTENT.de;
+  return `<svg class="flag-ic" viewBox="0 0 24 24" width="${size}" height="${size}" aria-hidden="true"><defs><clipPath id="${id}"><circle cx="12" cy="12" r="11.5"/></clipPath></defs><g clip-path="url(#${id})">${c}</g><circle cx="12" cy="12" r="11" fill="none" stroke="rgba(201,161,74,.6)" stroke-width="1.3"/></svg>`;
+}
+
 window.ICON = ICON;
 window.SERVICE_ICON = SERVICE_ICON;
+window.FLAG = FLAG;

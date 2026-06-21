@@ -188,10 +188,16 @@ function initCounters() {
 
 // ── Inject professional SVG icons into [data-icon] elements ──
 function initIcons() {
-  if (typeof window.ICON !== 'function') return;
-  els('[data-icon]').forEach(n => {
-    n.innerHTML = window.ICON(n.dataset.icon, +(n.dataset.iconSize) || 24);
-  });
+  if (typeof window.ICON === 'function') {
+    els('[data-icon]').forEach(n => {
+      n.innerHTML = window.ICON(n.dataset.icon, +(n.dataset.iconSize) || 24);
+    });
+  }
+  if (typeof window.FLAG === 'function') {
+    els('[data-flag]').forEach(n => {
+      n.innerHTML = window.FLAG(n.dataset.flag, +(n.dataset.flagSize) || 40);
+    });
+  }
 }
 
 // ── FAQ accordion ──

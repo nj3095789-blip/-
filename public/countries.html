@@ -53,19 +53,19 @@
   <script>
     el('#year').textContent = new Date().getFullYear();
     const countries = [
-      { flag:'🇨🇦', name:'كندا', programs:'Express Entry · PNP · دراسة', time:'6 – 12 شهر', note:'وجهة مثالية للعمالة الماهرة بنظام نقاط واضح وفرص إقامة دائمة.' },
-      { flag:'🇦🇺', name:'أستراليا', programs:'Skilled Visa · 482 · دراسة', time:'5 – 10 أشهر', note:'برامج مهنية مطلوبة ورواتب مرتفعة مع مسار للإقامة الدائمة.' },
-      { flag:'🇩🇪', name:'ألمانيا', programs:'EU Blue Card · باحث عن عمل', time:'3 – 8 أشهر', note:'سوق عمل قوي للمهندسين والتقنيين مع تأشيرة الكفاءات.' },
-      { flag:'🇳🇿', name:'نيوزيلندا', programs:'Skilled Migrant · موسمي', time:'4 – 9 أشهر', note:'جودة حياة عالية وبرامج عمل موسمية وزراعية مدعومة.' },
-      { flag:'🇳🇱', name:'هولندا', programs:'Highly Skilled Migrant', time:'2 – 5 أشهر', note:'إجراءات سريعة للموظفين المهرة وبيئة عمل بالإنجليزية.' },
-      { flag:'🇦🇪', name:'الإمارات', programs:'تأشيرة عمل · ذهبية', time:'2 – 6 أسابيع', note:'فرص خليجية واسعة في الضيافة والمالية والتقنية بإجراءات سريعة.' },
-      { flag:'🇶🇦', name:'قطر', programs:'تأشيرة عمل', time:'3 – 6 أسابيع', note:'رواتب معفاة من الضرائب وحزم مزايا قوية للمحاسبين والمهنيين.' },
-      { flag:'🇵🇱', name:'بولندا', programs:'تأشيرة عمل · إقامة', time:'2 – 4 أشهر', note:'بوابة للعمل داخل الاتحاد الأوروبي بتكاليف معيشة منخفضة.' },
-      { flag:'🇬🇧', name:'بريطانيا', programs:'Skilled Worker · دراسة', time:'3 – 6 أشهر', note:'رعاية تأشيرة من أصحاب عمل معتمدين في قطاعات متعددة.' },
+      { code:'ca', name:'كندا', programs:'Express Entry · PNP · دراسة', time:'6 – 12 شهر', note:'وجهة مثالية للعمالة الماهرة بنظام نقاط واضح وفرص إقامة دائمة.' },
+      { code:'au', name:'أستراليا', programs:'Skilled Visa · 482 · دراسة', time:'5 – 10 أشهر', note:'برامج مهنية مطلوبة ورواتب مرتفعة مع مسار للإقامة الدائمة.' },
+      { code:'de', name:'ألمانيا', programs:'EU Blue Card · باحث عن عمل', time:'3 – 8 أشهر', note:'سوق عمل قوي للمهندسين والتقنيين مع تأشيرة الكفاءات.' },
+      { code:'nz', name:'نيوزيلندا', programs:'Skilled Migrant · موسمي', time:'4 – 9 أشهر', note:'جودة حياة عالية وبرامج عمل موسمية وزراعية مدعومة.' },
+      { code:'nl', name:'هولندا', programs:'Highly Skilled Migrant', time:'2 – 5 أشهر', note:'إجراءات سريعة للموظفين المهرة وبيئة عمل بالإنجليزية.' },
+      { code:'ae', name:'الإمارات', programs:'تأشيرة عمل · ذهبية', time:'2 – 6 أسابيع', note:'فرص خليجية واسعة في الضيافة والمالية والتقنية بإجراءات سريعة.' },
+      { code:'qa', name:'قطر', programs:'تأشيرة عمل', time:'3 – 6 أسابيع', note:'رواتب معفاة من الضرائب وحزم مزايا قوية للمحاسبين والمهنيين.' },
+      { code:'pl', name:'بولندا', programs:'تأشيرة عمل · إقامة', time:'2 – 4 أشهر', note:'بوابة للعمل داخل الاتحاد الأوروبي بتكاليف معيشة منخفضة.' },
+      { code:'gb', name:'بريطانيا', programs:'Skilled Worker · دراسة', time:'3 – 6 أشهر', note:'رعاية تأشيرة من أصحاب عمل معتمدين في قطاعات متعددة.' },
     ];
     el('#countriesGrid').innerHTML = countries.map(c => `
       <div class="card reveal">
-        <div style="font-size:2.6rem;margin-bottom:6px">${c.flag}</div>
+        <div style="margin-bottom:10px">${FLAG(c.code, 50)}</div>
         <h3>${c.name}</h3>
         <p>${c.note}</p>
         <div style="margin-top:14px;display:flex;flex-direction:column;gap:6px;font-size:.9rem">
