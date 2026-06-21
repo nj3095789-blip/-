@@ -372,6 +372,35 @@ th { background: rgba(255,255,255,.05); color: var(--gold-300); font-weight: 800
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
 .reveal.in { opacity: 1; transform: none; }
 
+/* ── Eligibility assessment ── */
+.assess-progress { height: 8px; background: rgba(255,255,255,.08); border-radius: 999px; overflow: hidden; }
+.assess-progress .bar { height: 100%; width: 25%; background: var(--gold-grad); border-radius: 999px; transition: width .4s ease; }
+.astep-head { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+.astep-head h3 { color: #fff; margin: 0; }
+.astep-ic { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: rgba(201,161,74,.1); border: 1px solid var(--gold-brd); color: var(--gold-400); }
+.acheck { display: flex; align-items: center; gap: 10px; padding: 14px 16px; border: 1px solid var(--glass-brd); border-radius: 12px; margin-bottom: 10px; color: var(--silver); cursor: pointer; transition: border .2s, background .2s; }
+.acheck:hover { border-color: var(--gold-brd); background: rgba(201,161,74,.05); }
+.acheck input { width: auto; accent-color: var(--gold-500); }
+.gauge { position: relative; width: 180px; height: 180px; margin: 16px auto 10px; }
+.gauge svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.gauge circle { fill: none; stroke-width: 10; stroke-linecap: round; }
+.gauge .g-bg { stroke: rgba(255,255,255,.08); }
+.gauge .g-fg { stroke: url(#none); stroke: #e3c275; transition: stroke-dashoffset 1.3s cubic-bezier(.2,.8,.2,1); filter: drop-shadow(0 0 8px rgba(227,194,117,.5)); }
+.gauge-num { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; }
+.gauge-num span { font-size: 2.6rem; font-weight: 800; color: #fff; line-height: 1; }
+.gauge-num small { color: var(--muted); font-size: .9rem; }
+.reco { display: flex; gap: 12px; align-items: center; padding: 14px 16px; background: var(--glass); border: 1px solid var(--glass-brd); border-radius: 12px; margin-bottom: 10px; }
+.reco b { display: block; color: #fff; }
+.reco small { color: var(--muted); }
+
+/* ── Global offices ── */
+.office { border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow-sm); border: 1px solid var(--glass-brd); background: var(--glass); transition: transform .25s, border-color .25s; }
+.office:hover { transform: translateY(-5px); border-color: var(--gold-brd); }
+.office .flag { font-size: 2rem; margin-bottom: 8px; }
+.office h4 { color: #fff; margin-bottom: 2px; }
+.office .city { color: var(--gold-300); font-weight: 700; font-size: .92rem; }
+.office .addr { color: var(--muted); font-size: .86rem; margin-top: 6px; }
+
 /* ── Responsive ── */
 @media (max-width: 900px) {
   .hero .container { grid-template-columns: 1fr; }
