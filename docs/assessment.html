@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تقييم الأهلية المجاني | Skyline</title>
+  <meta name="description" content="احسب نقاط أهليتك للهجرة مجاناً خلال دقيقة واحصل على توصيات بأفضل برامج الهجرة المناسبة لك." />
+  <link rel="icon" href="assets/logo.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site">
+    <div class="container nav">
+      <a class="brand" href="index.html"><img src="assets/logo.svg" alt="Skyline" /><div class="name">SKYLINE<span>GLOBAL MIGRATION</span></div></a>
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html" data-i18n="nav_home">الرئيسية</a><a href="services.html" data-i18n="nav_services">الخدمات</a><a href="jobs.html" data-i18n="nav_jobs">الوظائف الدولية</a><a href="countries.html" data-i18n="nav_countries">أدلّة الدول</a><a href="assessment.html" data-i18n="nav_assess">تقييم الأهلية</a><a href="apply.html" data-i18n="nav_apply">تقديم طلب</a><a href="index.html#contact" data-i18n="nav_contact">تواصل معنا</a>
+      </nav>
+      <button class="lang-toggle" id="langToggle">EN</button>
+      <div class="nav-actions" id="navActions"></div>
+      <button class="menu-toggle" id="menuToggle">☰</button>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>تقييم الأهلية المجاني</h1>
+      <p>أجب عن أسئلة سريعة واحصل فوراً على نقاطك التقديرية وأفضل برامج الهجرة المناسبة لك.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:30px">
+    <div class="container" style="max-width:760px">
+      <div class="assess-progress"><div class="bar" id="progBar"></div></div>
+
+      <form id="assessForm" class="form-card" style="margin-top:22px">
+        <!-- Step 1 -->
+        <div class="astep" data-step="1">
+          <div class="astep-head"><span class="astep-ic" data-icon="users" data-icon-size="22"></span><h3>المعلومات الأساسية</h3></div>
+          <div class="field"><label>الفئة العمرية</label>
+            <select name="age" required>
+              <option value="">اختر…</option>
+              <option value="25">18 – 29 سنة</option><option value="20">30 – 34 سنة</option>
+              <option value="12">35 – 39 سنة</option><option value="5">40 – 44 سنة</option><option value="0">45 سنة فأكثر</option>
+            </select></div>
+          <div class="field"><label>أعلى مؤهل علمي</label>
+            <select name="edu" required>
+              <option value="">اختر…</option>
+              <option value="25">دكتوراه</option><option value="22">ماجستير</option><option value="18">بكالوريوس</option>
+              <option value="10">دبلوم</option><option value="4">ثانوية عامة</option>
+            </select></div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="astep" data-step="2" style="display:none">
+          <div class="astep-head"><span class="astep-ic" data-icon="briefcase" data-icon-size="22"></span><h3>الخبرة واللغة</h3></div>
+          <div class="field"><label>سنوات الخبرة العملية</label>
+            <select name="exp" required>
+              <option value="">اختر…</option>
+              <option value="0">أقل من سنة</option><option value="8">1 – 2 سنة</option><option value="14">3 – 5 سنوات</option>
+              <option value="18">6 – 10 سنوات</option><option value="20">أكثر من 10 سنوات</option>
+            </select></div>
+          <div class="field"><label>مستوى اللغة (الإنجليزية/الفرنسية)</label>
+            <select name="lang" required>
+              <option value="">اختر…</option>
+              <option value="0">مبتدئ</option><option value="6">أساسي</option><option value="12">جيد</option>
+              <option value="16">متقدّم</option><option value="20">طليق / اختبار معتمد مرتفع</option>
+            </select></div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="astep" data-step="3" style="display:none">
+          <div class="astep-head"><span class="astep-ic" data-icon="globe" data-icon-size="22"></span><h3>عوامل إضافية والوجهة</h3></div>
+          <div class="field"><label>الوجهة المفضّلة</label>
+            <select name="target" required>
+              <option value="">اختر الدولة…</option>
+              <option>كندا</option><option>أستراليا</option><option>ألمانيا</option><option>نيوزيلندا</option>
+              <option>هولندا</option><option>بريطانيا</option><option>الإمارات</option><option>قطر</option><option>غير محدّد</option>
+            </select></div>
+          <label class="acheck"><input type="checkbox" name="extra" value="5" /> لديّ عرض عمل أو كفيل في الخارج</label>
+          <label class="acheck"><input type="checkbox" name="extra" value="3" /> لديّ أقارب درجة أولى مقيمون في الوجهة</label>
+          <label class="acheck"><input type="checkbox" name="extra" value="2" /> سبق لي السفر/الدراسة في الخارج</label>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="astep" data-step="4" style="display:none">
+          <div class="astep-head"><span class="astep-ic" data-icon="userCheck" data-icon-size="22"></span><h3>استلام النتيجة</h3></div>
+          <p style="color:var(--muted);font-size:.9rem;margin-bottom:16px">أدخل بياناتك لعرض نتيجتك وحفظ تقييمك ليتابعه فريقنا.</p>
+          <div class="field"><label>الاسم الكامل</label><input name="full_name" required /></div>
+          <div class="field"><label>البريد الإلكتروني</label><input name="email" type="email" required /></div>
+          <div class="field"><label>رقم الهاتف (واتساب)</label><input name="phone" /></div>
+        </div>
+
+        <div class="alert" id="aAlert"></div>
+        <div style="display:flex;gap:12px;margin-top:10px">
+          <button type="button" class="btn btn-ghost" id="prevBtn" style="display:none">السابق</button>
+          <button type="button" class="btn btn-gold btn-block" id="nextBtn">التالي</button>
+          <button type="submit" class="btn btn-gold btn-block" id="resultBtn" style="display:none">احسب نتيجتي</button>
+        </div>
+      </form>
+
+      <!-- Result -->
+      <div id="resultCard" class="form-card" style="display:none;text-align:center">
+        <div class="eyebrow" style="color:var(--gold-400)">نتيجة التقييم</div>
+        <div class="gauge" id="gauge">
+          <svg viewBox="0 0 120 120"><circle class="g-bg" cx="60" cy="60" r="52"/><circle class="g-fg" id="gfg" cx="60" cy="60" r="52"/></svg>
+          <div class="gauge-num"><span id="scoreNum">0</span><small>/ 100</small></div>
+        </div>
+        <h2 id="scoreCat" style="color:#fff;margin:4px 0"></h2>
+        <p id="scoreMsg" style="color:var(--silver);max-width:520px;margin:0 auto 18px"></p>
+        <div id="recos" style="text-align:start;max-width:520px;margin:0 auto 22px"></div>
+        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+          <a class="btn btn-gold" href="apply.html">قدّم طلبك الآن</a>
+          <a class="btn btn-ghost" href="services.html">احجز استشارة خبير</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site"><div class="container"><div class="foot-bottom">© <span id="year"></span> Skyline Global Migration & Visa Experts.</div></div></footer>
+
+  <script src="js/icons.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    el('#year').textContent = new Date().getFullYear();
+    let step = 1; const maxStep = 4;
+    const form = el('#assessForm');
+
+    function showStep(n) {
+      els('.astep').forEach(s => s.style.display = (+s.dataset.step === n) ? 'block' : 'none');
+      el('#progBar').style.width = (n / maxStep * 100) + '%';
+      el('#prevBtn').style.display = n > 1 ? 'inline-flex' : 'none';
+      el('#nextBtn').style.display = n < maxStep ? 'block' : 'none';
+      el('#resultBtn').style.display = n === maxStep ? 'block' : 'none';
+    }
+    function stepValid(n) {
+      const sel = els(`.astep[data-step="${n}"] [required]`);
+      for (const f of sel) { if (!f.value) { f.focus(); return false; } }
+      return true;
+    }
+    el('#nextBtn').onclick = () => { if (stepValid(step)) { step++; showStep(step); window.scrollTo({top:0,behavior:'smooth'}); } };
+    el('#prevBtn').onclick = () => { step--; showStep(step); };
+
+    function calcScore() {
+      const n = (name) => +(form[name]?.value || 0);
+      let s = n('age') + n('edu') + n('exp') + n('lang');
+      let extra = 0;
+      els('input[name="extra"]:checked').forEach(c => extra += +c.value);
+      s += Math.min(extra, 10);
+      return Math.min(s, 100);
+    }
+
+    function recommend(score, target) {
+      const t = target && target !== 'غير محدّد' ? target : null;
+      const list = [];
+      if (score >= 75) {
+        list.push(['برامج الهجرة الفيدرالية السريعة', t === 'كندا' || !t ? 'Express Entry (كندا)' : 'برنامج العمالة الماهرة']);
+        list.push(['تأشيرة العمل برعاية صاحب عمل', 'فرص قبول مرتفعة جداً']);
+      } else if (score >= 60) {
+        list.push(['برامج الترشيح الإقليمي', 'PNP / State Nomination']);
+        list.push(['تأشيرة عمل أو دراسة', 'مسار تدريجي نحو الإقامة']);
+      } else if (score >= 45) {
+        list.push(['تحسين الملف ثم التقديم', 'رفع اللغة أو الخبرة يزيد نقاطك']);
+        list.push(['تأشيرة دراسة', 'بوابة فعّالة للإقامة لاحقاً']);
+      } else {
+        list.push(['استشارة لبناء خطة', 'نحدّد أسرع طريق لرفع أهليتك']);
+        list.push(['برامج موسمية / دراسة', 'نقطة انطلاق واقعية']);
+      }
+      return list;
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!stepValid(4)) return;
+      const btn = el('#resultBtn'); btn.disabled = true; btn.textContent = 'جارٍ الحساب…';
+      const score = calcScore();
+      const target = form.target.value;
+      const cat = score >= 75 ? 'مؤهّل بقوة 🎯' : score >= 60 ? 'مؤهّل جيد جداً' : score >= 45 ? 'مؤهّل بشروط' : 'يحتاج تحسين الملف';
+      const msg = score >= 75 ? 'ملفك تنافسي جداً! فرصك ممتازة في برامج الهجرة الماهرة.'
+        : score >= 60 ? 'ملفك جيد جداً ومؤهّل لعدة برامج مع تجهيز دقيق.'
+        : score >= 45 ? 'لديك أساس جيد، وبعض التحسينات ترفع فرصك بشكل كبير.'
+        : 'لا تقلق — نضع لك خطة عملية لرفع أهليتك خطوة بخطوة.';
+
+      // Save as a lead (application) so the team can follow up.
+      try {
+        const fd = new FormData();
+        fd.append('full_name', form.full_name.value);
+        fd.append('email', form.email.value);
+        fd.append('phone', form.phone.value || '');
+        fd.append('target', target);
+        fd.append('service_type', 'تقييم أهلية');
+        fd.append('message', `نتيجة تقييم الأهلية: ${score}/100 (${cat}). الوجهة: ${target}.`);
+        await fetch('/api/applications', { method: 'POST', credentials: 'include', body: fd });
+      } catch {}
+
+      // Reveal result
+      form.style.display = 'none';
+      el('#resultCard').style.display = 'block';
+      el('#scoreCat').textContent = cat;
+      el('#scoreMsg').textContent = msg;
+      const recos = recommend(score, target);
+      el('#recos').innerHTML = '<h4 style="color:#fff;margin-bottom:10px">برامج موصى بها لك:</h4>' +
+        recos.map(r => `<div class="reco"><span data-icon="check" data-icon-size="18" style="color:var(--gold-400)"></span><div><b>${r[0]}</b><small>${r[1]}</small></div></div>`).join('');
+      initIcons();
+
+      // Animate gauge
+      const circ = 2 * Math.PI * 52;
+      const fg = el('#gfg');
+      fg.style.strokeDasharray = circ;
+      fg.style.strokeDashoffset = circ;
+      requestAnimationFrame(() => { fg.style.strokeDashoffset = circ * (1 - score / 100); });
+      let cur = 0; const t = setInterval(() => { cur += 2; if (cur >= score) { cur = score; clearInterval(t); } el('#scoreNum').textContent = cur; }, 18);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    showStep(1);
+  </script>
+</body>
+</html>

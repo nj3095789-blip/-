@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تم الدفع | Skyline</title>
+  <link rel="icon" href="assets/logo.svg" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body style="background:var(--navy-grad);min-height:100vh;display:grid;place-items:center;padding:20px">
+  <div class="form-card center" style="max-width:480px;width:100%">
+    <div id="result">
+      <div data-icon="clock2" data-icon-size="48" style="display:flex;justify-content:center;color:var(--gold-400)"></div>
+      <h2 style="color:#fff;margin:10px 0">جارٍ تأكيد عملية الدفع…</h2>
+    </div>
+  </div>
+
+  <script src="js/icons.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    const p = new URLSearchParams(location.search);
+    const sessionId = p.get('session_id');
+    const isDemo = p.get('demo');
+
+    function render(ok, ref, extra = '') {
+      el('#result').innerHTML = `
+        <img src="assets/logo.svg" style="width:64px;margin:0 auto 12px" />
+        <div style="display:flex;justify-content:center;color:${ok ? 'var(--ok)' : 'var(--warn)'}">${ICON(ok ? 'check' : 'alert', 64)}</div>
+        <h2 style="color:#fff;margin:10px 0">${ok ? 'تمّ الدفع بنجاح!' : 'لم يكتمل الدفع'}</h2>
+        <p style="color:var(--muted);margin-bottom:8px">${ok
+          ? 'شكراً لثقتك بسكايلاين. تواصل معك فريقنا خلال 24 ساعة لبدء إجراءات ملفك.'
+          : 'لم نتمكّن من تأكيد الدفع. إذا تم خصم مبلغ منك فسيُرد تلقائياً.'}</p>
+        ${ref ? `<div class="chip ok" style="margin:10px 0">رقم المرجع: ${ref}</div>` : ''}
+        ${extra}
+        <div style="margin-top:22px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+          <a class="btn btn-gold" href="account.html">الذهاب إلى حسابي</a>
+          <a class="btn btn-ghost" href="index.html">العودة للرئيسية</a>
+        </div>`;
+    }
+
+    (async () => {
+      if (isDemo) { render(true, p.get('ref') || ''); return; }
+      if (!sessionId) { render(false); return; }
+      try {
+        const r = await api('/payments/verify?session_id=' + encodeURIComponent(sessionId));
+        const paid = r.status === 'paid';
+        render(paid, r.reference, paid ? `<p style="color:var(--gold-300);font-weight:700;font-size:1.3rem">${money(r.amount_cents, r.currency)}</p>` : '');
+      } catch (err) { render(false); }
+    })();
+  </script>
+</body>
+</html>

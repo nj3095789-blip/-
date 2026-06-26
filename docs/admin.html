@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>لوحة التحكم | Skyline</title>
+  <link rel="icon" href="assets/logo.svg" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site">
+    <div class="container nav">
+      <a class="brand" href="index.html"><img src="assets/logo.svg" alt="Skyline" /><div class="name">SKYLINE<span>ADMIN PANEL</span></div></a>
+      <div class="nav-actions"><a class="btn btn-ghost" href="index.html">عرض الموقع</a><button class="btn btn-navy" id="logoutBtn">خروج</button></div>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div id="denied" style="display:none" class="form-card center">
+        <h2 style="color:#fff">صلاحيات غير كافية</h2>
+        <p style="color:var(--muted);margin:10px 0">هذه الصفحة مخصّصة للمشرفين فقط.</p>
+        <a class="btn btn-gold" href="account.html">تسجيل الدخول كمشرف</a>
+      </div>
+
+      <div id="panel" style="display:none">
+        <div class="head" style="margin-bottom:30px"><div class="eyebrow">لوحة التحكم</div><h2>إدارة سكايلاين</h2></div>
+
+        <div class="stats" id="stats" style="margin-top:0;margin-bottom:40px"></div>
+
+        <div class="tabs" style="max-width:560px">
+          <button data-tab="apps" class="active">الطلبات</button>
+          <button data-tab="pays">المدفوعات</button>
+          <button data-tab="msgs">الرسائل</button>
+          <button data-tab="jobs">إضافة وظيفة</button>
+        </div>
+
+        <div id="tab-apps" class="tabc"></div>
+        <div id="tab-pays" class="tabc" style="display:none"></div>
+        <div id="tab-msgs" class="tabc" style="display:none"></div>
+        <div id="tab-jobs" class="tabc" style="display:none"></div>
+      </div>
+    </div>
+  </section>
+
+  <script src="js/app.js"></script>
+  <script>
+    el('#logoutBtn').onclick = async () => { await api('/auth/logout', { method: 'POST' }); location.href = 'index.html'; };
+    const fmtDate = (s) => new Date(s.replace(' ', 'T') + 'Z').toLocaleString('ar');
+
+    async function boot() {
+      let user;
+      try { user = (await api('/auth/me')).user; } catch { el('#denied').style.display = 'block'; return; }
+      if (user.role !== 'admin') { el('#denied').style.display = 'block'; return; }
+      el('#panel').style.display = 'block';
+      loadStats(); loadApps(); loadPays(); loadMsgs(); renderJobForm();
+    }
+
+    async function loadStats() {
+      const s = await api('/admin/stats');
+      el('#stats').innerHTML = `
+        <div class="stat"><div class="num">${s.users}</div><div class="lbl">المستخدمون</div></div>
+        <div class="stat"><div class="num">${s.applications}</div><div class="lbl">الطلبات</div></div>
+        <div class="stat"><div class="num">${s.paid}</div><div class="lbl">عمليات مدفوعة</div></div>
+        <div class="stat"><div class="num">${money(s.revenue_cents)}</div><div class="lbl">الإيرادات</div></div>`;
+    }
+
+    const STATUSES = ['received','in-review','approved','rejected','completed'];
+    async function loadApps() {
+      const { applications } = await api('/admin/applications');
+      el('#tab-apps').innerHTML = `<div class="table-wrap"><table>
+        <thead><tr><th>#</th><th>الاسم</th><th>البريد</th><th>الجنسية</th><th>وظيفة</th><th>المرفق</th><th>الحالة</th><th>ملاحظة للعميل</th><th>التاريخ</th></tr></thead>
+        <tbody>${applications.map(a => `<tr>
+          <td>SKY-${String(a.id).padStart(6,'0')}</td><td>${a.full_name}</td><td>${a.email}</td>
+          <td>${a.nationality || '—'}</td><td>${a.job_id ? '#' + a.job_id : (a.service_type || 'استشارة')}</td>
+          <td style="min-width:150px">${(a.docs && a.docs.length) ? a.docs.map(d => `<a class="chip gold" style="margin:2px" href="api/admin/documents/${d.id}/download" title="${d.name}">⬇ ${d.field}</a>`).join('') : '—'}</td>
+          <td><select data-app="${a.id}" class="statusSel">${STATUSES.map(s => `<option ${s===a.status?'selected':''}>${s}</option>`).join('')}</select></td>
+          <td><input class="noteInp" data-app="${a.id}" value="${(a.admin_note || '').replace(/"/g,'&quot;')}" placeholder="أضف ملاحظة…" style="min-width:160px" /></td>
+          <td>${fmtDate(a.created_at)}</td></tr>`).join('') || '<tr><td colspan="9">لا توجد طلبات</td></tr>'}</tbody>
+      </table></div>`;
+      els('.statusSel').forEach(sel => sel.onchange = async () => {
+        await api('/admin/applications/' + sel.dataset.app, { method: 'PATCH', body: JSON.stringify({ status: sel.value }) });
+      });
+      els('.noteInp').forEach(inp => inp.onchange = async () => {
+        await api('/admin/applications/' + inp.dataset.app, { method: 'PATCH', body: JSON.stringify({ admin_note: inp.value }) });
+      });
+    }
+
+    async function loadPays() {
+      const { payments } = await api('/admin/payments');
+      el('#tab-pays').innerHTML = `<div class="table-wrap"><table>
+        <thead><tr><th>#</th><th>البريد</th><th>المبلغ</th><th>المزوّد</th><th>الحالة</th><th>التاريخ</th></tr></thead>
+        <tbody>${payments.map(p => `<tr>
+          <td>PAY-${String(p.id).padStart(6,'0')}</td><td>${p.email}</td><td>${money(p.amount_cents,p.currency)}</td>
+          <td>${p.provider}</td><td><span class="status-pill status-${p.status}">${p.status}</span></td><td>${fmtDate(p.created_at)}</td>
+        </tr>`).join('') || '<tr><td colspan="6">لا توجد مدفوعات</td></tr>'}</tbody>
+      </table></div>`;
+    }
+
+    async function loadMsgs() {
+      const { messages } = await api('/admin/messages');
+      el('#tab-msgs').innerHTML = `<div class="table-wrap"><table>
+        <thead><tr><th>الاسم</th><th>البريد</th><th>الموضوع</th><th>الرسالة</th><th>التاريخ</th></tr></thead>
+        <tbody>${messages.map(m => `<tr><td>${m.name}</td><td>${m.email}</td><td>${m.subject || '—'}</td><td>${m.body}</td><td>${fmtDate(m.created_at)}</td></tr>`).join('') || '<tr><td colspan="5">لا توجد رسائل</td></tr>'}</tbody>
+      </table></div>`;
+    }
+
+    function renderJobForm() {
+      el('#tab-jobs').innerHTML = `<div class="form-card" style="max-width:620px">
+        <div class="alert" id="jobAlert"></div>
+        <form id="jobForm">
+          <div class="field"><label>المسمّى الوظيفي</label><input name="title" required /></div>
+          <div style="display:flex;gap:12px">
+            <div class="field" style="flex:1"><label>الدولة</label><input name="country" required /></div>
+            <div class="field" style="flex:1"><label>المدينة</label><input name="city" /></div>
+          </div>
+          <div style="display:flex;gap:12px">
+            <div class="field" style="flex:1"><label>المجال</label><input name="category" required /></div>
+            <div class="field" style="flex:1"><label>نوع التوظيف</label>
+              <select name="employment"><option value="full-time">دوام كامل</option><option value="part-time">دوام جزئي</option><option value="seasonal">موسمي</option><option value="contract">عقد</option></select></div>
+          </div>
+          <div class="field"><label>الراتب</label><input name="salary" placeholder="مثال: EUR 60,000 / سنة" /></div>
+          <div class="field"><label>الوصف</label><textarea name="description" required></textarea></div>
+          <div class="field"><label>المتطلبات</label><input name="requirements" /></div>
+          <label style="display:flex;gap:8px;align-items:center;margin-bottom:16px"><input type="checkbox" name="visa_support" checked style="width:auto" /> رعاية تأشيرة العمل</label>
+          <button class="btn btn-gold btn-block" type="submit">نشر الوظيفة</button>
+        </form>
+      </div>`;
+      el('#jobForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const data = Object.fromEntries(new FormData(e.target));
+        data.visa_support = e.target.visa_support.checked ? 1 : 0;
+        try {
+          await api('/admin/jobs', { method: 'POST', body: JSON.stringify(data) });
+          showAlert(el('#jobAlert'), '✓ تمّ نشر الوظيفة بنجاح', 'ok');
+          e.target.reset();
+        } catch (err) { showAlert(el('#jobAlert'), err.message); }
+      });
+    }
+
+    els('.tabs button').forEach(b => b.onclick = () => {
+      els('.tabs button').forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+      els('.tabc').forEach(c => c.style.display = 'none');
+      el('#tab-' + b.dataset.tab).style.display = 'block';
+    });
+
+    boot();
+  </script>
+</body>
+</html>
