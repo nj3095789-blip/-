@@ -391,6 +391,39 @@ th { background: rgba(255,255,255,.05); color: var(--gold-300); font-weight: 800
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
 .reveal.in { opacity: 1; transform: none; }
 
+/* ── Distinctive neon polish ── */
+::selection { background: rgba(123, 140, 255, .35); color: #fff; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #080d1a; }
+::-webkit-scrollbar-thumb { background: linear-gradient(#3b6bff, #a855f7); border-radius: 10px; border: 2px solid #080d1a; }
+
+.gold-text { background-size: 220% auto; animation: shimmer 7s linear infinite; }
+@keyframes shimmer { to { background-position: 220% center; } }
+
+/* stronger neon glow on interactive cards */
+.card:hover, .testi:hover, .step:hover, .job:hover, .office:hover, .country-card:hover {
+  box-shadow: var(--shadow), 0 0 34px rgba(91, 134, 255, .22);
+}
+/* animated gradient hairline on top of feature cards */
+.card::before {
+  content: ''; position: absolute; top: 0; inset-inline: 22px; height: 2px; border-radius: 2px;
+  background: var(--gold-grad); opacity: 0; transition: opacity .3s;
+}
+.card:hover::before { opacity: 1; }
+
+/* Hero typewriter line */
+.type-line { font-family: 'Space Mono', monospace; color: var(--silver); font-size: clamp(.95rem, 2.5vw, 1.15rem); margin-bottom: 20px; display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border: 1px solid var(--glass-brd); border-radius: 10px; background: rgba(255,255,255,.03); }
+.type-line .prompt { color: var(--gold-400); }
+.type-line .cursor { color: var(--gold-400); animation: blink 1.1s steps(1) infinite; }
+
+/* Success-rate bars (like the reference) */
+.bars { display: grid; gap: 20px; max-width: 660px; margin: 0 auto; }
+.bar-row .bar-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.bar-row .bar-top span { color: var(--silver); font-weight: 600; display: inline-flex; align-items: center; gap: 8px; }
+.bar-row .bar-top b { font-family: 'Space Mono', monospace; color: var(--gold-300); }
+.bar-track { height: 12px; border-radius: 999px; background: rgba(255,255,255,.07); overflow: hidden; border: 1px solid var(--glass-brd); }
+.bar-fill { height: 100%; width: 0; border-radius: 999px; background: var(--gold-grad); box-shadow: 0 0 14px rgba(91,134,255,.6); transition: width 1.5s cubic-bezier(.2,.85,.2,1); }
+
 /* ── Eligibility assessment ── */
 .assess-progress { height: 8px; background: rgba(255,255,255,.08); border-radius: 999px; overflow: hidden; }
 .assess-progress .bar { height: 100%; width: 25%; background: var(--gold-grad); border-radius: 999px; transition: width .4s ease; }

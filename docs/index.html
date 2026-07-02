@@ -48,7 +48,8 @@
     <div class="container">
       <div>
         <span class="hero-badge" data-i18n="hero_badge">✦ شريكك الموثوق منذ التأسيس · أكثر من 30 دولة</span>
-        <h1 data-i18n-rich="hero_title">طريقك نحو <span class="gold-text">مستقبل عالمي</span><br />يبدأ مع سكايلاين <span class="cursor">_</span></h1>
+        <div class="type-line"><span class="prompt">//</span> <span>نساعدك في</span> <span class="gold-text" id="typeWord"></span><span class="cursor">_</span></div>
+        <h1 data-i18n-rich="hero_title">طريقك نحو <span class="gold-text">مستقبل عالمي</span><br />يبدأ مع سكايلاين</h1>
         <p class="lead" data-i18n="hero_lead">نحوّل حلم الهجرة وتأمين فرصة العمل إلى واقع. استشارات قانونية معتمدة، تأشيرات عمل ودراسة، ووظائف دولية برعاية كاملة للتأشيرة — كل ذلك تحت سقف واحد.</p>
         <div class="hero-cta">
           <a class="btn btn-gold" href="services.html" data-i18n="hero_cta1">احجز استشارتك الآن</a>
@@ -113,6 +114,23 @@
         <div class="feature reveal"><div class="fi" data-icon="trending" data-icon-size="28"></div><div><h4>نسبة نجاح عالية</h4><p>97٪ من ملفاتنا تُقبل بفضل التجهيز الدقيق والمتابعة حتى صدور التأشيرة.</p></div></div>
         <div class="feature reveal"><div class="fi" data-icon="globe" data-icon-size="28"></div><div><h4>تغطية عالمية</h4><p>كندا، أستراليا، أوروبا، الخليج وأكثر — خطط مخصّصة لكل وجهة.</p></div></div>
         <div class="feature reveal"><div class="fi" data-icon="headset" data-icon-size="28"></div><div><h4>دعم متواصل</h4><p>متابعة لحظية لحالة طلبك وفريق دعم يرافقك في كل خطوة.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Success rates -->
+  <section class="section">
+    <div class="container">
+      <div class="head reveal">
+        <div class="eyebrow" data-i18n="rates_eyebrow">أرقام تتكلّم</div>
+        <h2 data-i18n="rates_title">معدّلات القبول حسب الوجهة</h2>
+      </div>
+      <div class="bars reveal">
+        <div class="bar-row"><div class="bar-top"><span><span data-flag="ca" data-flag-size="20"></span> كندا</span><b>97%</b></div><div class="bar-track"><div class="bar-fill" data-bar="97"></div></div></div>
+        <div class="bar-row"><div class="bar-top"><span><span data-flag="ae" data-flag-size="20"></span> الإمارات</span><b>96%</b></div><div class="bar-track"><div class="bar-fill" data-bar="96"></div></div></div>
+        <div class="bar-row"><div class="bar-top"><span><span data-flag="au" data-flag-size="20"></span> أستراليا</span><b>94%</b></div><div class="bar-track"><div class="bar-fill" data-bar="94"></div></div></div>
+        <div class="bar-row"><div class="bar-top"><span><span data-flag="de" data-flag-size="20"></span> ألمانيا</span><b>92%</b></div><div class="bar-track"><div class="bar-fill" data-bar="92"></div></div></div>
+        <div class="bar-row"><div class="bar-top"><span><span data-flag="gb" data-flag-size="20"></span> بريطانيا</span><b>90%</b></div><div class="bar-track"><div class="bar-fill" data-bar="90"></div></div></div>
       </div>
     </div>
   </section>
@@ -243,6 +261,22 @@
   <script src="js/app.js"></script>
   <script>
     el('#year').textContent = new Date().getFullYear();
+
+    // Hero typewriter (rotates through services)
+    (function typewriter() {
+      const words = ['الهجرة والإقامة', 'تأمين فرص العمل', 'تأشيرات العمل', 'الدراسة بالخارج', 'لمّ الشمل العائلي'];
+      const node = el('#typeWord'); if (!node) return;
+      let w = 0, c = 0, del = false;
+      (function tick() {
+        const word = words[w];
+        node.textContent = word.slice(0, c);
+        if (!del && c < word.length) { c++; setTimeout(tick, 90); }
+        else if (!del && c === word.length) { del = true; setTimeout(tick, 1600); }
+        else if (del && c > 0) { c--; setTimeout(tick, 45); }
+        else { del = false; w = (w + 1) % words.length; setTimeout(tick, 250); }
+      })();
+    })();
+
     (async () => {
       try {
         const { services } = await api('/services');
